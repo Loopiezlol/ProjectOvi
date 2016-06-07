@@ -21,4 +21,12 @@ module.exports = {
           process.env.OPENSHIFT_APP_NAME ||
           'mongodb://localhost/projectovi'
   }
+  // OPTIONS
+  options: {
+      db: {
+        safe: true,
+        replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+        server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
+      }
+    }
 };
