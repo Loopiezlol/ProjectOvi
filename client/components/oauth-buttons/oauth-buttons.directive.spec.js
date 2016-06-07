@@ -25,14 +25,14 @@ describe('Directive: oauthButtons', function() {
     compileDirective('<oauth-buttons></oauth-buttons>');
     expect(element.find('a.btn.btn-social')
         .length)
-      .toBeGreaterThan(0);
+      .to.be.at.least(1);
   });
 
   it('should evaluate and bind the classes attribute to scope.classes', function() {
     parentScope.scopedClass = 'scopedClass1';
     compileDirective('<oauth-buttons classes="testClass1 {{scopedClass}}"></oauth-buttons>');
     expect(elementScope.classes)
-      .toEqual('testClass1 scopedClass1');
+      .to.equal('testClass1 scopedClass1');
   });
 
   it('should bind scope.classes to class names on the anchor buttons', function() {
@@ -42,13 +42,13 @@ describe('Directive: oauthButtons', function() {
     elementScope.$digest();
     expect(element.find('a.btn.btn-social.testClass1.testClass2')
         .length)
-      .toBeGreaterThan(0);
+      .to.be.at.least(1);
 
     // Remove classes
     elementScope.classes = '';
     elementScope.$digest();
     expect(element.find('a.btn.btn-social.testClass1.testClass2')
         .length)
-      .toEqual(0);
+      .to.equal(0);
   });
 });

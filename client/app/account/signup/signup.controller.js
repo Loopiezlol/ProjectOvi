@@ -3,9 +3,9 @@
 class SignupController {
   //end-non-standard
 
-  constructor(Auth, $location) {
+  constructor(Auth, $state) {
       this.Auth = Auth;
-      this.$location = $location;
+      this.$state = $state;
     }
     //start-non-standard
 
@@ -21,7 +21,7 @@ class SignupController {
         })
         .then(() => {
           // Account created, redirect to home
-          this.$location.path('/');
+          this.$state.go('main');
         })
         .catch(err => {
           err = err.data;

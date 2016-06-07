@@ -18,7 +18,6 @@ function respondWithResult(res, statusCode) {
     if (entity) {
       res.status(statusCode).json(entity);
     }
-    return null;
   };
 }
 

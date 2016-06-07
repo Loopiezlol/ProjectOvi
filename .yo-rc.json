@@ -19,9 +19,10 @@
       "flow": false,
       "html": true,
       "less": true,
-      "ngroute": true,
+      "uirouter": true,
       "bootstrap": true,
       "uibootstrap": true,
+      "socketio": true,
       "auth": true,
       "models": true,
       "mongooseModels": true,
@@ -31,10 +32,10 @@
       "facebookAuth": true,
       "twitterAuth": true,
       "gulp": true,
-      "jasmine": true,
-      "mocha": false,
+      "mocha": true,
+      "jasmine": false,
       "should": false,
-      "expect": false
+      "expect": true
     }
   },
   "generator-ng-component": {
@@ -47,9 +48,10 @@
     "moduleName": "",
     "modulePrompt": true,
     "filters": [
-      "ngroute",
-      "jasmine",
-      "ngroute",
+      "uirouter",
+      "mocha",
+      "expect",
+      "uirouter",
       "es6"
     ],
     "extensions": [
