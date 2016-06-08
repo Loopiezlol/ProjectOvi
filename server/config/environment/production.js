@@ -20,7 +20,7 @@ module.exports = {
           process.env.OPENSHIFT_MONGODB_DB_URL +
           process.env.OPENSHIFT_APP_NAME ||
           'mongodb://localhost/projectovi'
-  }
+  },
   // OPTIONS
   options: {
       db: {
