@@ -36,6 +36,9 @@ Thing.find({}).remove()
       name: 'Granddaddy Purple',
       info: 'Easily deploy your app to Heroku or Openshift with the heroku ' +
              'and openshift subgenerators'
+    },{
+      name: 'Tampoane',
+      info: 'bune pentru femei'
     });
   });
 
