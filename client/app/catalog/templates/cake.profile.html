@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>This is the profile for : {{cake.cakeData.name}}</h2>
+
+    <h3 style="border-bottom: 1px solid black">Info:</h3>
+    <h3>Info: {{cake.cakeData.info}}</h3>
+    <h3>Price: {{cake.cakeData.price}}</h3>
+    <a ng-click="cake.edit = !cake.edit" class="trash"><span class="fa fa-fa-angle-right fa-2x"></span>Edit</a>
+</div>
+
+<form ng-if="cake.edit" class="cake-form">
+    <label></label>
+    <p class="input-group">
+        <input type="text" class="form-control" placeholder="Cake name" ng-model="cake.cakeData.name">
+        <input type="text" class="form-control" placeholder="Cake info" ng-model="cake.cakeData.info">
+        <input type="text" class="form-control" placeholder="Cake price" ng-model="cake.cakeData.price">
+        <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="cake.changeCake()">Add New</button>
+      </span>
+    </p>
+</form>
