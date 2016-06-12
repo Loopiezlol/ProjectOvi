@@ -25,3 +25,53 @@
 .navbar-text {
   margin-left: 15px;
 }
+
+#layer1 {
+  z-index: 3;
+  position:relative;
+  margin: auto;
+  background-color: blue;
+  border: 2px solid black;
+  width: 320px;
+  height: 300px;
+}
+
+#layer2 {
+  z-index: 3;
+  border: 2px solid black;
+  margin: auto;
+  margin-top: -20px;
+  width: 640px;
+  height: 600px;
+  background-color: lightpink;
+  position: relative;
+}
+
+#layer3 {
+  z-index: 3;
+  margin: auto;
+  margin-top: -20px;
+  position: relative;
+  background-color: yellow;
+  border: 2px solid black;
+  width: 960px;
+  height: 900px;
+}
+
+.landingpage {
+  z-index: -1;
+  background-color: lightblue;
+  position:relative;
+}
+
+.landingpage::after {
+  content:'';
+  z-index: 2;
+  border:2px dotted green;
+  position:absolute;
+  background-color: red;
+  bottom: 900px;
+  height: 300px;
+  width:100%;
+  margin: auto;
+}
