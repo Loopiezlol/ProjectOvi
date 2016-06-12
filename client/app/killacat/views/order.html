@@ -1,9 +1,10 @@
 <div class="container">
-    <h2>This is the profile for : {{order.orderData.name}}</h2>
+    <h2>This is the profile for : {{order.orderData._id}}</h2>
 
     <h3 style="border-bottom: 1px solid black">Info:</h3>
-    <h3>Info: {{order.orderData.info}}</h3>
-    <h3>Price: {{order.orderData.active}}</h3>
+    <h3>userId: {{order.orderData.userId}}</h3>
+    <h3>buyLater: {{order.orderData.buyLater}}</h3>
+    <h3>orderDate: {{order.orderData.orderDate}}</h3>
     <a ng-click="order.edit = !order.edit" class="trash"><span class="fa fa-fa-angle-right fa-2x"></span>Edit</a>
 </div>
 

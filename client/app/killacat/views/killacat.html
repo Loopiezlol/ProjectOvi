@@ -3,9 +3,9 @@
 <h1 class="page-header">testing purposes:</h1>
 <ul ng-repeat="order in $ctrl.orders">
     <li><p>{{order._id}}</p></li>
-    <li><p>{{order.name}}</p></li>
-    <li><p>{{order.info}}</p></li>
-    <li><p>{{order.active}}</p></li>
+    <li><p>{{order.userId}}</p></li>
+    <li><p>{{order.buyLater}}</p></li>
+    <li><p>{{order.orderDate}}</p></li>
     <a ng-click="$ctrl.delete(order)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
     <a ng-click="$ctrl.go(order._id)" class="trash"><span class="fa fa-fa-angle-right fa-2x"></span>go</a>
 </ul>
@@ -15,9 +15,9 @@
 <form class="orders-form">
     <label></label>
     <p class="input-group">
-        <input type="text" class="form-control" placeholder="Order name" ng-model="$ctrl.newOrder.name">
-        <input type="text" class="form-control" placeholder="Order info" ng-model="$ctrl.newOrder.info">
-        <input type="text" class="form-control" placeholder="Order price" ng-model="$ctrl.newOrder.active">
+        <input type="text" class="form-control" placeholder="Order user_id" ng-model="$ctrl.newOrder.userId">
+        <input type="text" class="form-control" placeholder="Order info" ng-model="$ctrl.newOrder.buyLater">
+        <input type="date" class="form-control" placeholder="Order price" ng-model="$ctrl.newOrder.orderDate">
         <span class="input-group-btn">
         <button type="submit" class="btn btn-primary" ng-click="$ctrl.addOrder()">Add New</button>
       </span>
