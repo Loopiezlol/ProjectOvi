@@ -11,6 +11,9 @@ class NavbarController {
     }, {
       'title': 'Landing page',
       'state': 'landingpage'
+    }, {
+      'title': 'Swag',
+      'state': 'killacat'
     }];
 
   isCollapsed = true;

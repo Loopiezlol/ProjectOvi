@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 var OrderSchema = new mongoose.Schema({
   name: String,
   info: String,
-  active: Boolean
+  active: String
 });
 
 export default mongoose.model('Order', OrderSchema);
