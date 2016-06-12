@@ -7,7 +7,7 @@ class CakeController {
         this.Cake = Cake;
         this.$state = $state;
         this.cakeData = Cake.get({ id: $stateParams.id });
-        this.edit = true;
+        this.edit = false;
     }
 
     delete(cake) {
@@ -18,11 +18,7 @@ class CakeController {
     }
 
     changeCake() {
-        this.cake.update({id: $stateParams.id}, this.cakeData)
-    }
-
-    changeCake() {
-        this.Cake.update({id: this.cakeData._id}, this.cakeData)
+        this.Cake.update({ id: this.cakeData._id }, this.cakeData);
         this.edit = false;
     }
 

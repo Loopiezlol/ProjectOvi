@@ -10,7 +10,8 @@ angular.module('projectOviApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'validation.match'
+  'validation.match',
+  'angular-parallax'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

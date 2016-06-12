@@ -8,6 +8,9 @@ class NavbarController {
   }, {
       'title': 'Catalog',
       'state': 'catalog'
+    }, {
+      'title': 'Landing page',
+      'state': 'landingpage'
     }];
 
   isCollapsed = true;
