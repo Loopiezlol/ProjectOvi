@@ -18,6 +18,7 @@ function respondWithResult(res, statusCode) {
     if (entity) {
       res.status(statusCode).json(entity);
     }
+    return null;
   };
 }
 
@@ -37,8 +38,10 @@ function removeEntity(res) {
       return entity.remove()
         .then(() => {
           res.status(204).end();
+          return null;
         });
     }
+    return null;
   };
 }
 

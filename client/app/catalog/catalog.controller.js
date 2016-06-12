@@ -12,7 +12,7 @@
 
     go(id) {
       this.$state.go('cake', { id: id });
-    };
+    }
 
     addCake() {
       this.newCake.$save((err, data) => {
