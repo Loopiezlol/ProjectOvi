@@ -1,27 +1,42 @@
-
 <div class="container">
-<h1 class="page-header">Cakes:</h1>
-<ul ng-repeat="cake in $ctrl.cakes">
-    <li><p>{{cake._id}}</p></li>
-    <li><p>{{cake.name}}</p></li>
-    <li><p>{{cake.info}}</p></li>
-    <li><p>{{cake.price}}</p></li>
-    <a ng-click="$ctrl.delete(cake)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
-    <a ng-click="$ctrl.go(cake._id)" class="trash"><span class="fa fa-fa-angle-right fa-2x"></span>go</a>
-</ul>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="card col-md-4" ng-repeat="cake in $ctrl.cakes">
+                    <p>{{cake._id}}</p>
+                    <p>{{cake.name}}</p>
+                    <p>{{cake.info}}</p>
+                    <p>{{cake.price}}</p>
+                    <a ng-click="$ctrl.delete(cake)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
+                    <a ng-click="$ctrl.go(cake._id)" class="trash"><span class="fa fa-fa-angle-right fa-2x"></span>go</a>
+                    <ngcart-addtocart id="{{cake._id}}" quantity="1" quantity-max="9" name="{{cake.name}}" price="{{cake.price}}" template-url="components/ngcart/addtocart.html" data="cake">Add to Cart</ngcart-addtocart>
 
-<h2>Make a cake</h2>
+                </div>
+            </div>
+        </div>
 
-<form class="cake-form">
-    <label></label>
-    <p class="input-group">
-        <input type="text" class="form-control" placeholder="Cake name" ng-model="$ctrl.newCake.name">
-        <input type="text" class="form-control" placeholder="Cake info" ng-model="$ctrl.newCake.info">
-        <input type="number" class="form-control" placeholder="Cake price" ng-model="$ctrl.newCake.price">
-        <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="$ctrl.addCake()">Add New</button>
-      </span>
-    </p>
-</form>
+        <div class="card col-md-3">
+            <h2>Make a cake</h2>
 
+            
+
+            <form class="cake-form">
+                <p class="input-group">
+                    <input type="text" class="form-control" placeholder="Cake name" ng-model="$ctrl.newCake.name">
+                    <input type="text" class="form-control" placeholder="Cake info" ng-model="$ctrl.newCake.info">
+                    <input type="number" class="form-control" placeholder="Cake price" ng-model="$ctrl.newCake.price">
+                    <button type="submit" class="btn btn-primary" ng-click="$ctrl.addCake()">Add New</button>
+                </p>
+            </form>
+
+            <div ng-show="errors" class="alert alert-danger" role="alert">
+                <strong>Error(s):</strong>
+                <p>{{errors}}</p>
+            </div>
+
+            
+
+        </div>
+    </div>
 </div>
+

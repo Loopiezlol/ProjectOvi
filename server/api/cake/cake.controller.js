@@ -10,6 +10,7 @@
 'use strict';
 
 import _ from 'lodash';
+import path from 'path';
 import Cake from './cake.model';
 
 function respondWithResult(res, statusCode) {
@@ -61,6 +62,32 @@ function handleError(res, statusCode) {
     res.status(statusCode).send(err);
   };
 }
+
+function saveFile(res, file) {
+  return function(entity){
+    var newPath = '/assets/uploads/' + path.basename(file.path);
+    console.log('new path is' + newPath);
+    entity.imageUrl = newPath;
+    return entity.save().spread(function(updated) {
+      console.log(updated);
+      return updated;
+    });
+  }
+} 
+
+// Uploads a new Product's image in the DB
+exports.upload = function(req, res) {
+  var file = req.files.file;
+  if(!file){
+    return handleError(res)('File not provided');
+  }
+
+  Cake.findById(req.params.id)
+    .then(handleEntityNotFound(res))
+    .then(saveFile(res, file))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+};
 
 // Gets a list of Cakes
 export function index(req, res) {

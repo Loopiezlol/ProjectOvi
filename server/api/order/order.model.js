@@ -9,7 +9,8 @@ var OrderSchema = new mongoose.Schema({
   items: [{
     quantity: Number,
     cake: {type: mongoose.Schema.Types.ObjectId, ref: 'Cake'}
-  }]
+  }],
+  total: Number
   //map here
 });
 
