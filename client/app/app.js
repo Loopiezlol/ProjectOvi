@@ -11,7 +11,9 @@ angular.module('projectOviApp', [
   'ui.router',
   'ui.bootstrap',
   'validation.match',
-  'angular-parallax'
+  'angular-parallax',
+  'ngFileUpload',
+  'ngCart'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
