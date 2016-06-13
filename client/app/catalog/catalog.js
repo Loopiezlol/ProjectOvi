@@ -3,10 +3,15 @@
 angular.module('projectOviApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('catalog', {
-        url: '/catalog',
-        template: '<catalog></catalog>'
+      .state('checkout', {
+        url: '/checkout',
+        template: '<checkout></checkout>'
       })
+
+      .state('catalog', {
+      url: '/catalog',
+      template: '<catalog></catalog>'
+    })
 
       .state('cake', {
         url: '/catalog/:id',
