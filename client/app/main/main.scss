@@ -60,18 +60,20 @@
 
 .landingpage {
   z-index: -1;
-  background-color: lightblue;
   position:relative;
+  background-image: url('../assets/images/cer.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .landingpage::after {
   content:'';
   z-index: 2;
-  border:2px dotted green;
   position:absolute;
-  background-color: red;
-  bottom: 900px;
-  height: 300px;
+  background-image: url('../assets/images/munti.png');
+  background-size: 100% 100%;
+  bottom: 750px;
+  height: 450px;
   width:100%;
   margin: auto;
 }
