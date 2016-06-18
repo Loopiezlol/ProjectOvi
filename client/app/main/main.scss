@@ -63,11 +63,10 @@
   position:relative;
   background-image: url('../assets/images/cer.png');
   background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
 }
 
-.landingpage::after {
-  content:'';
+#mountains {
   z-index: 2;
   position:absolute;
   background-image: url('../assets/images/munti.png');
@@ -76,4 +75,33 @@
   height: 450px;
   width:100%;
   margin: auto;
+}
+
+.parallax {
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.parallax_layer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.parallax_layer--base {
+  transform: translateZ(0);
+}
+
+.parallax_layer--back {
+  transform: translateZ(-1px) scale(2);
+}
+
+.parallax_group {
+  position: relative;
+  height: 100vh;
+  transform-style: preserve-3d;
 }
