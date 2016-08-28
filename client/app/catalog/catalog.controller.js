@@ -13,20 +13,16 @@
 
     }
 
-    
 
-    
+
+
 
     $onInit() {
-      
+
     }
 
     go(id) {
-<<<<<<< HEAD
-      this.$state.go('cake', { id: id });
-=======
       this.$state.go('cake', { id: id })
->>>>>>> origin/BRANCHULUTUDOSE
     }
 
     addCake() {
