@@ -2,16 +2,99 @@
   margin: 20px 0;
 }
 
+.navbar ul.nav {
+  background-color: #1b1f23 !important;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar ul.nav a  {
+    font-size: 17px;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #ffffff !important;
+}
+
+.navbar ul.nav a:visited {
+  background-color: #1b1f23 !important;
+}
+
+.navbar-brand {
+  color: #fff !important;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 30px;
+  letter-spacing: -4;
+  margin-top: 15px;
+}
+
+.arrow-down {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-shadow: inset 0 0 0 1000px rgba(38, 38, 38, 0.65);
+  margin: auto;
+
+  p {
+    color: #fff !important;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+}
+
+.arrow-down:hover {
+  box-shadow: inset 0 0 0 1000px rgba(38, 38, 38, 0.9);
+
+}
+
+// .navbar ul.nav:visited {
+//   height: 80px
+//   display: flex;
+//   align-items: center;
+// }
+// .navbar-default .navbar-nav > .active > a {
+//   height: 80px;
+//
+// }
+
+.navbar {
+  -webkit-box-shadow: 0px 3px 1px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 3px 1px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 3px 1px 0px rgba(0,0,0,0.75);
+}
 #banner {
   border-bottom: none;
   margin-top: -20px;
+  height: calc(100vh - 80px);
+  background-color: #000000 !important;
+  background-image: url('../assets/images/background.jpeg') !important;
+  background-repeat: no-repeat !important;
+  background-position: top center !important;
+  background-attachment: fixed !important;
+  background-size: cover;
+  box-shadow: inset 0 0 0 1000px rgba(38, 38, 39, 0.65);
+
+
+
+  .container-header {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    .logo {
+      filter: brightness(0) invert(1);
+      height: 200px;
+      width: auto;
+      margin: 30px;
+      }
+
+    p {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 30px;
+    }
+  }
 }
 
-#banner h1 {
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-}
 
 .hero-unit {
   position: relative;
@@ -24,4 +107,11 @@
 
 .navbar-text {
   margin-left: 15px;
+}
+
+.navbar {
+  min-height: 80px;
+  transform: 1s;
+  background-color: #1b1f23;
+  border: 0;
 }

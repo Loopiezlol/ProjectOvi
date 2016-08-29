@@ -13,7 +13,7 @@ angular.module('projectOviApp', [
   'validation.match',
   'angular-parallax',
   'ngFileUpload',
-  'ngCart'
+  'ngCart',
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
