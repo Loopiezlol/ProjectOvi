@@ -8,12 +8,6 @@ class NavbarController {
   }, { 
       'title': 'Products',
       'state': 'products'
-    }, {
-      'title': 'Landing page',
-      'state': 'landingpage'
-    }, {
-      'title': 'Swag',
-      'state': 'killacat'
     }];
 
   isCollapsed = true;
