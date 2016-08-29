@@ -1,15 +1,15 @@
 /**
- * Cake model events
+ * Product model events
  */
 
 'use strict';
 
 import {EventEmitter} from 'events';
-import Cake from './cake.model';
-var CakeEvents = new EventEmitter();
+import Product from './product.model';
+var ProductEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)
-CakeEvents.setMaxListeners(0);
+ProductEvents.setMaxListeners(0);
 
 // Model events
 var events = {
@@ -20,14 +20,14 @@ var events = {
 // Register the event emitter to the model events
 for (var e in events) {
   var event = events[e];
-  Cake.schema.post(e, emitEvent(event));
+  Product.schema.post(e, emitEvent(event));
 }
 
 function emitEvent(event) {
   return function(doc) {
-    CakeEvents.emit(event + ':' + doc._id, doc);
-    CakeEvents.emit(event, doc);
+    ProductEvents.emit(event + ':' + doc._id, doc);
+    ProductEvents.emit(event, doc);
   }
 }
 
-export default CakeEvents;
+export default ProductEvents;

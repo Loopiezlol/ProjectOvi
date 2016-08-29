@@ -3,40 +3,40 @@
 var app = require('../..');
 import request from 'supertest';
 
-var newCake;
+var newProduct;
 
-describe('Cake API:', function() {
+describe('Product API:', function() {
 
-  describe('GET /api/cakes', function() {
-    var cakes;
+  describe('GET /api/products', function() {
+    var products;
 
     beforeEach(function(done) {
       request(app)
-        .get('/api/cakes')
+        .get('/api/products')
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
           if (err) {
             return done(err);
           }
-          cakes = res.body;
+          products = res.body;
           done();
         });
     });
 
     it('should respond with JSON array', function() {
-      expect(cakes).to.be.instanceOf(Array);
+      expect(products).to.be.instanceOf(Array);
     });
 
   });
 
-  describe('POST /api/cakes', function() {
+  describe('POST /api/products', function() {
     beforeEach(function(done) {
       request(app)
-        .post('/api/cakes')
+        .post('/api/products')
         .send({
-          name: 'New Cake',
-          info: 'This is the brand new cake!!!'
+          name: 'New Product',
+          info: 'This is the brand new product!!!'
         })
         .expect(201)
         .expect('Content-Type', /json/)
@@ -44,55 +44,55 @@ describe('Cake API:', function() {
           if (err) {
             return done(err);
           }
-          newCake = res.body;
+          newProduct = res.body;
           done();
         });
     });
 
-    it('should respond with the newly created cake', function() {
-      expect(newCake.name).to.equal('New Cake');
-      expect(newCake.info).to.equal('This is the brand new cake!!!');
+    it('should respond with the newly created product', function() {
+      expect(newProduct.name).to.equal('New Product');
+      expect(newProduct.info).to.equal('This is the brand new product!!!');
     });
 
   });
 
-  describe('GET /api/cakes/:id', function() {
-    var cake;
+  describe('GET /api/products/:id', function() {
+    var product;
 
     beforeEach(function(done) {
       request(app)
-        .get('/api/cakes/' + newCake._id)
+        .get('/api/products/' + newProduct._id)
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
           if (err) {
             return done(err);
           }
-          cake = res.body;
+          product = res.body;
           done();
         });
     });
 
     afterEach(function() {
-      cake = {};
+      product = {};
     });
 
-    it('should respond with the requested cake', function() {
-      expect(cake.name).to.equal('New Cake');
-      expect(cake.info).to.equal('This is the brand new cake!!!');
+    it('should respond with the requested product', function() {
+      expect(product.name).to.equal('New Product');
+      expect(product.info).to.equal('This is the brand new product!!!');
     });
 
   });
 
-  describe('PUT /api/cakes/:id', function() {
-    var updatedCake;
+  describe('PUT /api/products/:id', function() {
+    var updatedProduct;
 
     beforeEach(function(done) {
       request(app)
-        .put('/api/cakes/' + newCake._id)
+        .put('/api/products/' + newProduct._id)
         .send({
-          name: 'Updated Cake',
-          info: 'This is the updated cake!!!'
+          name: 'Updated Product',
+          info: 'This is the updated product!!!'
         })
         .expect(200)
         .expect('Content-Type', /json/)
@@ -100,27 +100,27 @@ describe('Cake API:', function() {
           if (err) {
             return done(err);
           }
-          updatedCake = res.body;
+          updatedProduct = res.body;
           done();
         });
     });
 
     afterEach(function() {
-      updatedCake = {};
+      updatedProduct = {};
     });
 
-    it('should respond with the updated cake', function() {
-      expect(updatedCake.name).to.equal('Updated Cake');
-      expect(updatedCake.info).to.equal('This is the updated cake!!!');
+    it('should respond with the updated product', function() {
+      expect(updatedProduct.name).to.equal('Updated Product');
+      expect(updatedProduct.info).to.equal('This is the updated product!!!');
     });
 
   });
 
-  describe('DELETE /api/cakes/:id', function() {
+  describe('DELETE /api/products/:id', function() {
 
     it('should respond with 204 on successful removal', function(done) {
       request(app)
-        .delete('/api/cakes/' + newCake._id)
+        .delete('/api/products/' + newProduct._id)
         .expect(204)
         .end((err, res) => {
           if (err) {
@@ -130,9 +130,9 @@ describe('Cake API:', function() {
         });
     });
 
-    it('should respond with 404 when cake does not exist', function(done) {
+    it('should respond with 404 when product does not exist', function(done) {
       request(app)
-        .delete('/api/cakes/' + newCake._id)
+        .delete('/api/products/' + newProduct._id)
         .expect(404)
         .end((err, res) => {
           if (err) {

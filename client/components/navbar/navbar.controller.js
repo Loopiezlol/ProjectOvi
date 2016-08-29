@@ -5,9 +5,9 @@ class NavbarController {
   menu = [{
     'title': 'Home',
     'state': 'main'
-  }, {
-      'title': 'Catalog',
-      'state': 'catalog'
+  }, { 
+      'title': 'Products',
+      'state': 'products'
     }, {
       'title': 'Landing page',
       'state': 'landingpage'

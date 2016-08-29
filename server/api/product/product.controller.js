@@ -1,17 +1,17 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/cakes              ->  index
- * POST    /api/cakes              ->  create
- * GET     /api/cakes/:id          ->  show
- * PUT     /api/cakes/:id          ->  update
- * DELETE  /api/cakes/:id          ->  destroy
+ * GET     /api/products              ->  index
+ * POST    /api/products              ->  create
+ * GET     /api/products/:id          ->  show
+ * PUT     /api/products/:id          ->  update
+ * DELETE  /api/products/:id          ->  destroy
  */
 
 'use strict';
 
 import _ from 'lodash';
 import path from 'path';
-import Cake from './cake.model';
+import Product from './product.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -19,7 +19,6 @@ function respondWithResult(res, statusCode) {
     if (entity) {
       res.status(statusCode).json(entity);
     }
-    return null;
   };
 }
 
@@ -39,10 +38,8 @@ function removeEntity(res) {
       return entity.remove()
         .then(() => {
           res.status(204).end();
-          return null;
         });
     }
-    return null;
   };
 }
 
@@ -65,6 +62,7 @@ function handleError(res, statusCode) {
 
 function saveFile(res, file) {
   return function(entity){
+    //TODO delete last image
     var newPath = '/assets/uploads/' + path.basename(file.path);
     console.log('new path is' + newPath);
     entity.imageUrl = newPath;
@@ -82,50 +80,50 @@ exports.upload = function(req, res) {
     return handleError(res)('File not provided');
   }
 
-  Cake.findById(req.params.id)
+  Product.findById(req.params.id)
     .then(handleEntityNotFound(res))
     .then(saveFile(res, file))
     .then(respondWithResult(res))
     .catch(handleError(res));
 };
 
-// Gets a list of Cakes
+// Gets a list of Products
 export function index(req, res) {
-  return Cake.find().exec()
+  return Product.find().exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Gets a single Cake from the DB
+// Gets a single Product from the DB
 export function show(req, res) {
-  return Cake.findById(req.params.id).exec()
+  return Product.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Creates a new Cake in the DB
+// Creates a new Product in the DB
 export function create(req, res) {
-  return Cake.create(req.body)
+  return Product.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
 
-// Updates an existing Cake in the DB
+// Updates an existing Product in the DB
 export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
-  return Cake.findById(req.params.id).exec()
+  return Product.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Deletes a Cake from the DB
+// Deletes a Product from the DB
 export function destroy(req, res) {
-  return Cake.findById(req.params.id).exec()
+  return Product.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));

@@ -1,13 +1,11 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./cake.controller');
+var controller = require('./product.controller');
 var uploadOptions = { autoFile: true,
                       uploadDir: 'client/assets/uploads/'
 }
 var multiparty = require('connect-multiparty');
-
-
 
 var router = express.Router();
 

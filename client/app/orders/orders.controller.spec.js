@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Component: LandingpageComponent', function () {
+describe('Component: OrdersComponent', function () {
 
   // load the controller's module
   beforeEach(module('projectOviApp'));
 
-  var LandingpageComponent, scope;
+  var OrdersComponent, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($componentController, $rootScope) {
     scope = $rootScope.$new();
-    LandingpageComponent = $componentController('LandingpageComponent', {
+    OrdersComponent = $componentController('OrdersComponent', {
       $scope: scope
     });
   }));

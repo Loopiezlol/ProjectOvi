@@ -2,7 +2,7 @@
 
 import mongoose from 'mongoose';
 
-var CakeSchema = new mongoose.Schema({
+var ProductSchema = new mongoose.Schema({
   name: String,
   info: String,
   price: {type: String},
@@ -10,4 +10,4 @@ var CakeSchema = new mongoose.Schema({
   imageUrl: String
 });
 
-export default mongoose.model('Cake', CakeSchema);
+export default mongoose.model('Product', ProductSchema);
