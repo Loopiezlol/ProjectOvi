@@ -3,9 +3,14 @@
 
   class CheckoutComponent {
 
-    constructor(Cake, ngCart) {
+    constructor(Cake, Order, ngCart) {
       this.Cake = Cake;
+      this.Order = Order;
+      this.ngCart = ngCart;
+    }
 
+    transferToOrder() {
+      console.log(this.ngCart);
     }
 
   }
@@ -18,4 +23,3 @@
 
 
 })();
-

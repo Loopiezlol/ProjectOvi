@@ -9,7 +9,7 @@
                     <p>{{cake.price}}</p>
                     <a ng-click="$ctrl.delete(cake)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
                     <a ng-click="$ctrl.go(cake._id)" class="trash"><span class="fa fa-fa-angle-right fa-2x"></span>go</a>
-                    <ngcart-addtocart id="{{cake._id}}" quantity="1" quantity-max="9" name="{{cake.name}}" price="{{cake.price}}" template-url="components/ngcart/addtocart.html" data="cake">Add to Cart</ngcart-addtocart>
+                    <ngcart-addtocart id="{{cake._id}}" quantity="1" quantity-max="9" name="{{cake.name}}" price="{{cake.price}}" template-url="components/ngCart/addtocart.html" data="cake">Add to Cart</ngcart-addtocart>
 
                 </div>
             </div>
@@ -18,7 +18,7 @@
         <div class="card col-md-3">
             <h2>Make a cake</h2>
 
-            
+
 
             <form class="cake-form">
                 <p class="input-group">
@@ -34,9 +34,8 @@
                 <p>{{errors}}</p>
             </div>
 
-            
+
 
         </div>
     </div>
 </div>
-
