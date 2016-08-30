@@ -14,6 +14,7 @@ angular.module('projectOviApp', [
   'angular-parallax',
   'ngFileUpload',
   'ngCart',
+  'duScroll'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
