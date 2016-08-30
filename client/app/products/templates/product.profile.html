@@ -1,0 +1,56 @@
+<div class="container">
+    <h2>This is the profile for : {{$ctrl.productData.name}}</h2>
+    <div class="card">
+        <div class="container">
+
+
+            <div class="row">
+
+                <div class="card col-md-9">
+                    <h3 style="border-bottom: 1px solid black">Info:</h3>
+                    <h3>Info: {{$ctrl.productData.info}}</h3>
+                    <h3>Price: {{$ctrl.productData.price}}</h3>
+                    <h3>img Url: {{$ctrl.productData.imageUrl}}</h3>
+                    <h3>bin: {{$ctrl.productData.imageBin}}</h3>
+
+                    <img class="product-preview" ng-src="{{$ctrl.productData.imageUrl}}">
+                    <a ng-click="$ctrl.edit = !$ctrl.edit" class="trash"><span class="fa fa-fa-angle-right fa-2x"></span>Edit</a>
+                </div>
+                <div class="col-md-2">
+                    Drop product pic:
+                    <div ngf-select="upload($file)" ngf-drop="upload($file)" class="drop-box"
+                            ngf-drag-over-class="dragover" ngf-multiple="true"
+                            ngf-pattern="'image/*'" ngf-max-size="15MB" accept="image/*">Drop Images here or click to upload</div>
+                            <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+
+                            <button accept="image/*" ngf-max-size="15MB" type="file" class="btn btn-primary" ngf-select="upload($file)">Upload on file select</button>
+
+                            <h2 ng-show="file">Preview</h2>
+                            <img ngf-src="file" width="170px">
+                            <div ng-show="file">{{file.name}} {{file.$error}} {{file.$errorParam}}</div>
+                        </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                    <div ng-if="$ctrl.edit" class="card">
+    <div class="container">
+        <form class="product-form">
+            <label></label>
+            <p class="input-group">
+                <input type="text" class="form-control" placeholder="product name" ng-model="$ctrl.productData.name">
+                <input type="text" class="form-control" placeholder="product info" ng-model="$ctrl.productData.info">
+                <input type="number" class="form-control" placeholder="product price" ng-model="$ctrl.productData.price">
+                <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="$ctrl.changeProduct()">Add Newss</button></span>
+            </p>
+        </form>
+    </div>
+</div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+</div>

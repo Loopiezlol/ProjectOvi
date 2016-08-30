@@ -2,16 +2,99 @@
   margin: 20px 0;
 }
 
+.navbar ul.nav {
+  background-color: #1b1f23 !important;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar ul.nav a  {
+    font-size: 17px;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #ffffff !important;
+}
+
+.navbar ul.nav a:visited {
+  background-color: #1b1f23 !important;
+}
+
+.navbar-brand {
+  color: #fff !important;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 30px;
+  letter-spacing: -4;
+  margin-top: 15px;
+}
+
+.arrow-down {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-shadow: inset 0 0 0 1000px rgba(38, 38, 38, 0.65);
+  margin: auto;
+
+  p {
+    color: #fff !important;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+}
+
+.arrow-down:hover {
+  box-shadow: inset 0 0 0 1000px rgba(38, 38, 38, 0.9);
+
+}
+
+// .navbar ul.nav:visited {
+//   height: 80px
+//   display: flex;
+//   align-items: center;
+// }
+// .navbar-default .navbar-nav > .active > a {
+//   height: 80px;
+//
+// }
+
+.navbar {
+  -webkit-box-shadow: 0px 3px 1px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 3px 1px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 3px 1px 0px rgba(0,0,0,0.75);
+}
 #banner {
   border-bottom: none;
   margin-top: -20px;
+  height: calc(100vh - 80px);
+  background-color: #000000 !important;
+  background-image: url('../assets/images/background.jpeg') !important;
+  background-repeat: no-repeat !important;
+  background-position: top center !important;
+  background-attachment: fixed !important;
+  background-size: cover;
+  box-shadow: inset 0 0 0 1000px rgba(38, 38, 39, 0.65);
+
+
+
+  .container-header {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    .logo {
+      filter: brightness(0) invert(1);
+      height: 200px;
+      width: auto;
+      margin: 30px;
+      }
+
+    p {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 30px;
+    }
+  }
 }
 
-#banner h1 {
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-}
 
 .hero-unit {
   position: relative;
@@ -26,6 +109,7 @@
   margin-left: 15px;
 }
 
+<<<<<<< HEAD
 #layer1 {
   z-index: 3;
   position:relative;
@@ -104,4 +188,84 @@
   position: relative;
   height: 100vh;
   transform-style: preserve-3d;
+=======
+.navbar {
+  min-height: 80px;
+  transform: 1s;
+  background-color: #1b1f23;
+  border: 0;
+}
+
+.page-header {
+  width: 1200px;
+  text-align: center;
+}
+
+#cakeContainer {
+  height: 250px;
+  width: 1200px;
+  margin: 0px;
+  padding: 10px;
+  list-style-type: none;
+  text-align: center;
+  display: inline;
+}
+
+#cake1 {
+  margin: auto;
+  background-image: url('https://static.pexels.com/photos/6679/hands-summer-party-colorful.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+  width: 300px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+#cake2 {
+  margin: auto;
+  background-image: url('https://static.pexels.com/photos/130452/pexels-photo-130452.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+  width: 300px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+#cake3 {
+  margin: auto;
+  background-image: url('https://static.pexels.com/photos/80779/cake-foodporn-night-80779.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+  width: 300px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+.imgWrap {
+  position: relative;
+  margin: auto;
+  padding-left: 30px;
+  height: 250px;
+  width: 300px;
+}
+
+.imgDescription {
+  position: absolute;
+  height: 250px;
+  width: 300px;
+  top: 0;
+  bottom: 0;
+  left: 30px;
+  right: 0;
+  background: rgba(29, 106, 154, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility opacity 0.2s;
+}
+
+.imgWrap:hover .imgDescription {
+  visibility: visible;
+  opacity: 1;
+>>>>>>> master
 }
