@@ -5,11 +5,7 @@ var controller = require('./braintree.controller');
 
 var router = express.Router();
 
-router.get('/', controller.index);
-router.get('/:id', controller.show);
-router.post('/', controller.create);
-router.put('/:id', controller.update);
-router.patch('/:id', controller.update);
-router.delete('/:id', controller.destroy);
+router.get('/client_token', controller.clientToken);
+router.post('/checkout', controller.checkout);
 
 module.exports = router;

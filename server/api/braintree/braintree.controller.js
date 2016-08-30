@@ -12,7 +12,23 @@
 import _ from 'lodash';
 import Braintree from './braintree.model';
 
-function respondWithResult(res, statusCode) {
+function handleError(res, statusCode) {
+  statusCode = statusCode || 500;
+  return function(err) {
+    res.status(statusCode).send(err);
+  };
+}
+
+function handleResponse (res) {
+  return function (err, result) {
+    if(err) {
+      return handleError(res)(err);
+    }
+    responseWithResult(res)(result);
+  }
+}
+
+function responseWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
     if (entity) {
@@ -21,82 +37,24 @@ function respondWithResult(res, statusCode) {
   };
 }
 
-function saveUpdates(updates) {
-  return function(entity) {
-    var updated = _.merge(entity, updates);
-    return updated.save()
-      .then(updated => {
-        return updated;
-      });
-  };
+exports.clientToken = function(req, res){
+  Braintree.clientToken.generate({}, function (err, data) {
+    return handleResponse(res)(err, data.clientToken);
+  });
 }
 
-function removeEntity(res) {
-  return function(entity) {
-    if (entity) {
-      return entity.remove()
-        .then(() => {
-          res.status(204).end();
-        });
+exports.checkout = function(req, res){
+  Braintree.transaction.sale({
+    amount: req.body.total,
+    paymentMethodNonce: req.body.nonce,
+  }, function callback (err, result) {
+    if(err) {
+      return handleError(res)(err);
     }
-  };
-}
-
-function handleEntityNotFound(res) {
-  return function(entity) {
-    if (!entity) {
-      res.status(404).end();
-      return null;
+    if(result.success){
+      responseWithResult(res)(result);
+    } else {
+      handleError(res)(result.errors);
     }
-    return entity;
-  };
-}
-
-function handleError(res, statusCode) {
-  statusCode = statusCode || 500;
-  return function(err) {
-    res.status(statusCode).send(err);
-  };
-}
-
-// Gets a list of Braintrees
-export function index(req, res) {
-  return Braintree.find().exec()
-    .then(respondWithResult(res))
-    .catch(handleError(res));
-}
-
-// Gets a single Braintree from the DB
-export function show(req, res) {
-  return Braintree.findById(req.params.id).exec()
-    .then(handleEntityNotFound(res))
-    .then(respondWithResult(res))
-    .catch(handleError(res));
-}
-
-// Creates a new Braintree in the DB
-export function create(req, res) {
-  return Braintree.create(req.body)
-    .then(respondWithResult(res, 201))
-    .catch(handleError(res));
-}
-
-// Updates an existing Braintree in the DB
-export function update(req, res) {
-  if (req.body._id) {
-    delete req.body._id;
-  }
-  return Braintree.findById(req.params.id).exec()
-    .then(handleEntityNotFound(res))
-    .then(saveUpdates(req.body))
-    .then(respondWithResult(res))
-    .catch(handleError(res));
-}
-
-// Deletes a Braintree from the DB
-export function destroy(req, res) {
-  return Braintree.findById(req.params.id).exec()
-    .then(handleEntityNotFound(res))
-    .then(removeEntity(res))
-    .catch(handleError(res));
+  });
 }
