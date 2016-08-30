@@ -115,3 +115,76 @@
   background-color: #1b1f23;
   border: 0;
 }
+
+.page-header {
+  width: 1200px;
+  text-align: center;
+}
+
+#cakeContainer {
+  height: 250px;
+  width: 1200px;
+  margin: 0px;
+  padding: 10px;
+  list-style-type: none;
+  text-align: center;
+  display: inline;
+}
+
+#cake1 {
+  margin: auto;
+  background-image: url('https://static.pexels.com/photos/6679/hands-summer-party-colorful.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+  width: 300px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+#cake2 {
+  margin: auto;
+  background-image: url('https://static.pexels.com/photos/130452/pexels-photo-130452.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+  width: 300px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+#cake3 {
+  margin: auto;
+  background-image: url('https://static.pexels.com/photos/80779/cake-foodporn-night-80779.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+  width: 300px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+.imgWrap {
+  position: relative;
+  margin: auto;
+  padding-left: 30px;
+  height: 250px;
+  width: 300px;
+}
+
+.imgDescription {
+  position: absolute;
+  height: 250px;
+  width: 300px;
+  top: 0;
+  bottom: 0;
+  left: 30px;
+  right: 0;
+  background: rgba(29, 106, 154, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility opacity 0.2s;
+}
+
+.imgWrap:hover .imgDescription {
+  visibility: visible;
+  opacity: 1;
+}
