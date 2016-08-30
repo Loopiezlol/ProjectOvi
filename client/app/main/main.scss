@@ -109,86 +109,6 @@
   margin-left: 15px;
 }
 
-<<<<<<< HEAD
-#layer1 {
-  z-index: 3;
-  position:relative;
-  margin: auto;
-  background-color: blue;
-  border: 2px solid black;
-  width: 320px;
-  height: 300px;
-}
-
-#layer2 {
-  z-index: 3;
-  border: 2px solid black;
-  margin: auto;
-  margin-top: -20px;
-  width: 640px;
-  height: 600px;
-  background-color: lightpink;
-  position: relative;
-}
-
-#layer3 {
-  z-index: 3;
-  margin: auto;
-  margin-top: -20px;
-  position: relative;
-  background-color: yellow;
-  border: 2px solid black;
-  width: 960px;
-  height: 900px;
-}
-
-.landingpage {
-  z-index: -1;
-  position:relative;
-  background-image: url('../assets/images/cer.png');
-  background-size: 100% 100%;
-  background-repeat: repeat-y;
-}
-
-#mountains {
-  z-index: 2;
-  position:absolute;
-  background-image: url('../assets/images/munti.png');
-  background-size: 100% 100%;
-  bottom: 750px;
-  height: 450px;
-  width:100%;
-  margin: auto;
-}
-
-.parallax {
-  perspective: 1px;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.parallax_layer {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.parallax_layer--base {
-  transform: translateZ(0);
-}
-
-.parallax_layer--back {
-  transform: translateZ(-1px) scale(2);
-}
-
-.parallax_group {
-  position: relative;
-  height: 100vh;
-  transform-style: preserve-3d;
-=======
 .navbar {
   min-height: 80px;
   transform: 1s;
@@ -267,5 +187,4 @@
 .imgWrap:hover .imgDescription {
   visibility: visible;
   opacity: 1;
->>>>>>> master
 }
