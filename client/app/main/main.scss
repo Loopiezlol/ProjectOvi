@@ -97,7 +97,6 @@ p, h1, h2, h3 {
   }
 }
 
-
 .hero-unit {
   position: relative;
   padding: 30px 15px;
@@ -122,66 +121,150 @@ p, h1, h2, h3 {
   text-align: center;
   font-size: 40px;
   margin: 20px;
+  margin-top: 60px;
 }
 
-#cakeContainer {
-  height: 250px;
+
+.cake-wrapper {
   width: 100%;
-  margin: 0 auto;
-  list-style-type: none;
-  text-align: center;
-  display: inline;
+  min-height: 250px;
+  margin-top: 90px;
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row; /* works with row or column */
+   flex-direction: row;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+
 }
 
+.cake {
+  min-height: 250px;
+  max-width: 300px;
+  width: 100%;
+  transition: all .3s ease-in-out;
+  box-shadow: 0px 6px 15px 0px rgba(50, 50, 50, 0.78);
+  cursor: pointer;
+
+
+  p {
+    visibility: hidden;
+    opacity: 0;
+    font-size: 30px;
+    color: white;
+    margin: 10px;
+    bottom: 0px;
+    position: absolute;
+    margin-left: 30px;
+  }
+
+
+}
+
+.cake:hover {
+  transform: scale(1.1) ;
+  box-shadow: inset 0 0 0 1000px rgba(139, 139, 152, 0.33);
+
+  p {
+    visibility: visible;
+    opacity: 1;
+  }
+
+}
+
+@media only screen and (max-width: 1000px) {
+  .cake-wrapper {
+    flex-direction: column;
+  }
+}
 #cake1 {
-  margin: auto;
   background-image: url('https://static.pexels.com/photos/6679/hands-summer-party-colorful.jpg');
-  background-repeat: no-repeat;
   background-size: cover;
-  height: 250px;
-  width: 300px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+
 }
 
 #cake2 {
-  margin: auto;
   background-image: url('https://static.pexels.com/photos/130452/pexels-photo-130452.jpeg');
-  background-repeat: no-repeat;
   background-size: cover;
-  height: 250px;
-  width: 300px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+
 }
 
 #cake3 {
-  margin: auto;
   background-image: url('https://static.pexels.com/photos/80779/cake-foodporn-night-80779.jpeg');
-  background-repeat: no-repeat;
   background-size: cover;
-  height: 250px;
-  width: 300px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 }
 
-.imgWrap {
-  position: relative;
-  margin: auto;
-  height: 250px;
-  width: 300px;
+.icons-wrapper {
+  height: 75px;
+  width: 90px;
+  background-image: url(../client/assets/icons/email.svg);
 }
 
-.imgDescription {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  bottom: 0;
-  background: rgba(72, 72, 78, 0.5);
-  opacity: 0;
-  -webkit-transition: opacity 0.5s;
-  transition: opacity 0.5s;
+#button1 {
+  background: url("../client/assets/icons/email.svg");
+  background-size: 150px 250px;
 }
-
-.imgWrap:hover .imgDescription {
-  opacity: 1;
-}
+//
+// #cakeContainer {
+//   height: 250px;
+//   width: 100%;
+//   margin: 0 auto;
+//   list-style-type: none;
+//   text-align: center;
+//   display: flex;
+// }
+//
+// #cake1 {
+//   margin: auto;
+//   background-image: url('https://static.pexels.com/photos/6679/hands-summer-party-colorful.jpg');
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   height: 100%;
+//   width: 100%;
+//   box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+// }
+//
+// #cake2 {
+//   margin: auto;
+//   background-image: url('https://static.pexels.com/photos/130452/pexels-photo-130452.jpeg');
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   height: 100%;
+//   width: 100%;
+//   box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+// }
+//
+// #cake3 {
+//   margin: auto;
+//   background-image: url('https://static.pexels.com/photos/80779/cake-foodporn-night-80779.jpeg');
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   height: 100%;
+//   width: 100%;
+//   box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+// }
+//
+// .imgWrap {
+//   position: relative;
+//   margin: auto;
+//   height: 250px;
+//   width: 100%;
+// }
+//
+// .imgDescription {
+//   position: absolute;
+//   height: 100%;
+//   width: 100%;
+//   top: 0;
+//   bottom: 0;
+//   background: rgba(72, 72, 78, 0.5);
+//   opacity: 0;
+//   -webkit-transition: opacity 0.5s;
+//   transition: opacity 0.5s;
+// }
+//
+// .imgWrap:hover .imgDescription {
+//   opacity: 1;
+// }
