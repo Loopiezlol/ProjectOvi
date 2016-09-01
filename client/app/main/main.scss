@@ -197,14 +197,42 @@ p, h1, h2, h3 {
 }
 
 .icons-wrapper {
-  height: 75px;
-  width: 90px;
-  background-image: url(../client/assets/icons/email.svg);
+  width: 100%;
+  min-height: 250px;
+  margin-top: 90px;
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row; /* works with row or column */
+   flex-direction: row;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
 }
 
-#button1 {
-  background: url("../client/assets/icons/email.svg");
-  background-size: 150px 250px;
+.icons {
+  min-height: 250px;
+  max-width: 300px;
+  width: 100%;
+  cursor: pointer;
+}
+
+#icon1 {
+  background-image: url('../assets/icons/shopping-cart.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#icon2 {
+  background-image: url('../assets/icons/info.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#icon3 {
+  background-image: url('../assets/icons/email.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 //
 // #cakeContainer {
