@@ -5,6 +5,7 @@
 
 'use strict';
 import User from '../api/user/user.model';
+import Product from '../api/product/product.model';
 
 // User.find({}).remove()
 //   .then(() => {
@@ -24,3 +25,19 @@ import User from '../api/user/user.model';
 //       console.log('finished populating users');
 //     });
 //   });
+
+ Product.find({}).remove()
+   .then(() => {
+     Product.create({
+       name: 'Test User',
+       info: 'test@example.com',
+       price: 123 
+     }, {
+       name: 'local',
+       info: 'admin',
+       price: 456
+     })
+     .then(() => {
+       console.log('finished populating users');
+     });
+   });
