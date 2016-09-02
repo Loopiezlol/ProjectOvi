@@ -39,7 +39,8 @@ function responseWithResult(res, statusCode) {
 
 exports.clientToken = function(req, res){
   Braintree.clientToken.generate({}, function (err, data) {
-    return handleResponse(res)(err, data.clientToken);
+    //console.log(Braintree.clientID)
+    return handleResponse(res)(err, res.clientToken);
   });
 }
 

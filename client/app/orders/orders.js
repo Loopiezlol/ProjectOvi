@@ -8,6 +8,11 @@ angular.module('projectOviApp')
         template: '<checkout></checkout>'
       })
 
+      .state('order', {
+        url: '/orders/:id',
+        template: '<order></order>'
+      })
+
       .state('orders', {
         url: '/orders',
         template: '<orders></orders>'
