@@ -1,6 +1,4 @@
-.thing-form {
-  margin: 20px 0;
-}
+
 
 .navbar ul.nav {
   background-color: #1b1f23 !important;
@@ -25,6 +23,10 @@
   font-size: 30px;
   letter-spacing: -4;
   margin-top: 15px;
+}
+
+p, h1, h2, h3 {
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .arrow-down {
@@ -95,7 +97,6 @@
   }
 }
 
-
 .hero-unit {
   position: relative;
   padding: 30px 15px;
@@ -115,3 +116,183 @@
   background-color: #1b1f23;
   border: 0;
 }
+
+.cake-header {
+  text-align: center;
+  font-size: 40px;
+  margin: 20px;
+  margin-top: 60px;
+}
+
+
+.cake-wrapper {
+  width: 100%;
+  min-height: 250px;
+  margin-top: 90px;
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row; /* works with row or column */
+   flex-direction: row;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+
+}
+
+.cake {
+  min-height: 250px;
+  max-width: 300px;
+  width: 100%;
+  transition: all .3s ease-in-out;
+  box-shadow: 0px 6px 15px 0px rgba(50, 50, 50, 0.78);
+  cursor: pointer;
+
+
+  p {
+    visibility: hidden;
+    opacity: 0;
+    font-size: 30px;
+    color: white;
+    margin: 10px;
+    bottom: 0px;
+    position: absolute;
+    margin-left: 30px;
+  }
+
+
+}
+
+.cake:hover {
+  transform: scale(1.1) ;
+  box-shadow: inset 0 0 0 1000px rgba(139, 139, 152, 0.33);
+
+  p {
+    visibility: visible;
+    opacity: 1;
+  }
+
+}
+
+@media only screen and (max-width: 1000px) {
+  .cake-wrapper {
+    flex-direction: column;
+  }
+}
+#cake1 {
+  background-image: url('https://static.pexels.com/photos/6679/hands-summer-party-colorful.jpg');
+  background-size: cover;
+
+}
+
+#cake2 {
+  background-image: url('https://static.pexels.com/photos/130452/pexels-photo-130452.jpeg');
+  background-size: cover;
+
+}
+
+#cake3 {
+  background-image: url('https://static.pexels.com/photos/80779/cake-foodporn-night-80779.jpeg');
+  background-size: cover;
+}
+
+.icons-wrapper {
+  width: 100%;
+  min-height: 250px;
+  margin-top: 90px;
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row; /* works with row or column */
+   flex-direction: row;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+}
+
+.icons {
+  min-height: 250px;
+  max-width: 300px;
+  width: 100%;
+  cursor: pointer;
+}
+
+#icon1 {
+  background-image: url('../assets/icons/shopping-cart.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#icon2 {
+  background-image: url('../assets/icons/info.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#icon3 {
+  background-image: url('../assets/icons/email.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+//
+// #cakeContainer {
+//   height: 250px;
+//   width: 100%;
+//   margin: 0 auto;
+//   list-style-type: none;
+//   text-align: center;
+//   display: flex;
+// }
+//
+// #cake1 {
+//   margin: auto;
+//   background-image: url('https://static.pexels.com/photos/6679/hands-summer-party-colorful.jpg');
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   height: 100%;
+//   width: 100%;
+//   box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+// }
+//
+// #cake2 {
+//   margin: auto;
+//   background-image: url('https://static.pexels.com/photos/130452/pexels-photo-130452.jpeg');
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   height: 100%;
+//   width: 100%;
+//   box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+// }
+//
+// #cake3 {
+//   margin: auto;
+//   background-image: url('https://static.pexels.com/photos/80779/cake-foodporn-night-80779.jpeg');
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   height: 100%;
+//   width: 100%;
+//   box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+// }
+//
+// .imgWrap {
+//   position: relative;
+//   margin: auto;
+//   height: 250px;
+//   width: 100%;
+// }
+//
+// .imgDescription {
+//   position: absolute;
+//   height: 100%;
+//   width: 100%;
+//   top: 0;
+//   bottom: 0;
+//   background: rgba(72, 72, 78, 0.5);
+//   opacity: 0;
+//   -webkit-transition: opacity 0.5s;
+//   transition: opacity 0.5s;
+// }
+//
+// .imgWrap:hover .imgDescription {
+//   opacity: 1;
+// }
