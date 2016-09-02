@@ -128,7 +128,7 @@ p, h1, h2, h3 {
 .cake-wrapper {
   width: 100%;
   min-height: 250px;
-  margin-top: 90px;
+  margin-top: 150px;
    display: -webkit-flex;
    display: flex;
    -webkit-flex-direction: row; /* works with row or column */
@@ -211,6 +211,7 @@ p, h1, h2, h3 {
 }
 
 .icons {
+  margin-top: 250px;
   min-height: 250px;
   max-width: 300px;
   width: 100%;
@@ -236,11 +237,13 @@ p, h1, h2, h3 {
 }
 
 .about-wrapper {
+  margin-top: 500px;
   h1 {
     font-size: 64px;
     border-bottom: 2px solid black;
   }
   p {
+    margin-top: 50px;
     clear: left;
     font-size: 32px;
     font-family: sans-serif;
@@ -251,7 +254,9 @@ p, h1, h2, h3 {
     height: 300px;
     width: 400px;
     float: right;
-    align: top;
+    margin-left: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0px 6px 15px 0px rgba(50, 50, 50, 0.78);
   }
 }
 
