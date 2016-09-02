@@ -1,1 +1,26 @@
-<div>This is the orders view.</div>
+<div class="container">
+    <div class="row">
+        <div class="card col-md-4" ng-repeat="order in $ctrl.orders">
+                    <p>order ID{{order._id}}</p>
+                    <p>Buyer: {{order.name}}</p>
+                    <p>User/Buyer ID{{order.user}}</p>
+                    <p>Buyer Address:{{order.shippingAddress}}</p>
+                    <p>Buyer billing address:{{order.billingAddress}}</p>
+
+                    <p>items: {{order.items}}</p>
+                   <p> shipping: {{order.shipping}}</p>
+              <p>      tax: {{order.shipping}}</p>
+                   <p> discount: {{order.discount}}</p>
+     <p>               subTotal: {{order.subTotal}}</p>
+                  <p>  total: {{order.total}}</p>
+
+                  <p>Order status: {{order.status}}</p>
+                    <p> Payment type: {{order.paymentType}}</p>
+                    <p> Invoice ID {{order.invoicedID}}</p>
+                    <p> Invoiced User ID: {{order.invoicedUserID}}</p>
+                    
+                    <a ng-click="$ctrl.delete(order)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
+                    <a ng-click="$ctrl.order(order)" class="trash">order</a>
+        </div>
+    </div>
+</div>

@@ -18,6 +18,10 @@ module.exports = {
   GOOGLE_ID:        'app-id',
   GOOGLE_SECRET:    'secret',
 
+  BRAINTREE_ID: 'smmwn9hykgrr85gg',
+  BRAINTREE_SECRET: '2f785d5c8ef9845bb75e9ec0bfed15e6',
+  BRAINTREE_MERCHANT: 'xfz35wscrdn73f2j',
+
   // Control debug level for modules using visionmedia/debug
   DEBUG: ''
 };

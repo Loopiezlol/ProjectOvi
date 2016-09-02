@@ -1,7 +1,19 @@
 <div class="container">
-    <div class="row">
-        <h1>Cart</h1>
-        <ngcart-cart template-url="components/ngCart/cart.html"></ngcart-cart>
-        <button ng-click="$ctrl.transferToOrder()">Make Order</button>
+  <div class="row">
+    <h1>Cart</h1>
+    <ngcart-cart template-url="components/ngCart/cart.html"></ngcart-cart>
+  </div>
+
+  <div class="row">
+    <h1>Choose a payment method</h1>
+    <p class="help-block">{{ $ctrl.errors }}</p><br>
+    <div class="col-md-6">
+      <form action="/buy-something" method="post">
+        
+      </form>
+      <braintree-paypal></braintree-paypal>
     </div>
+    <button type="button" ng-click="$ctrl.buy()">buoy</button>
+  </div>
+    
 </div>

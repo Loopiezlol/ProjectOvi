@@ -34,6 +34,17 @@ export default function(app) {
   app.use(cookieParser());
   app.use(passport.initialize());
 
+  app.all('*', function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'URLs to trust of allow');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    if ('OPTIONS' == req.method) {
+    res.sendStatus(200);
+    } else {
+      next();
+    }
+  });
+
   // Persist sessions with MongoStore / sequelizeStore
   // We need to enable sessions for passport-twitter because it's an
   // oauth 1.0 strategy, and Lusca depends on sessions
@@ -51,7 +62,7 @@ export default function(app) {
    * Lusca - express server security
    * https://github.com/krakenjs/lusca
    */
-  if ('test' !== env) {
+  if ('test' !== env && 'development' !== env) {
     app.use(lusca({
       csrf: {
         angular: true
@@ -62,7 +73,7 @@ export default function(app) {
         includeSubDomains: true,
         preload: true
       },
-      xssProtection: true
+      xssProtection: false
     }));
   }
 

@@ -7,7 +7,6 @@
 import User from '../api/user/user.model';
 import Product from '../api/product/product.model';
 
-
 // User.find({}).remove()
 //   .then(() => {
 //     User.create({
