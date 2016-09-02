@@ -234,6 +234,27 @@ p, h1, h2, h3 {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+.about-wrapper {
+  h1 {
+    font-size: 64px;
+    border-bottom: 2px solid black;
+  }
+  p {
+    clear: left;
+    font-size: 32px;
+    font-family: sans-serif;
+  }
+
+  img {
+    background-color: red;
+    height: 300px;
+    width: 400px;
+    float: right;
+    align: top;
+  }
+}
+
 //
 // #cakeContainer {
 //   height: 250px;
