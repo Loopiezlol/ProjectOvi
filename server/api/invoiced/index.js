@@ -12,8 +12,8 @@ router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 
 router.get('/invoices/', controller.index); // [][]
-router.get('/invoices/:id', controller.show); // [*][]
-router.post('/invoices/:customer_id', controller.create);//  [*][]
+router.get('/invoices/:id', controller.show); // [*][*]
+router.post('/invoices/:customer_id', controller.create);//  [*][*]
 
 router.get('/customers/', controller.index); // [][]
 router.get('/customers/:id', controller.show); // [][]

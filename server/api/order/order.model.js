@@ -1,15 +1,34 @@
 'use strict';
 
 import mongoose from 'mongoose';
+import https from 'https';
+import http from 'http';
+
+
 
 var _ = require('lodash');
 var Schema = mongoose.Schema;
+
+var InvoicedSchema = new mongoose.Schema({
+  customer: {type: String, default: '49231'},
+  payment_terms: {type: String, default: 'NET 14'},
+  items: [{
+    name: String,
+    quantity: Number,
+    unit_cost: Number
+  }],
+  taxes: [{
+    amount: Number
+  }]
+});
+
 
 var OrderDetailsSchema = new Schema({
   product: { type: Schema.Types.ObjectId, ref: 'Product' },
   quantity: Number,
   total: {type: Number, get: getPrice, set: setPrice }
 });
+
 
 var OrderSchema = new Schema({
   // buyer details
@@ -28,13 +47,32 @@ var OrderSchema = new Schema({
   status: { type: String, default: 'pending' }, // pending, paid/ failed, delivered, canceled, refunded.
   paymentType: { type: String, default: 'Invoiced' },
   invoiceID: String,
-  invoicedUserID: String
+  invoicedUserID: String,
+  Invoiced: {
+   // invoice_id: String,
+    invoice: InvoicedSchema
+  }
 });
-/*
+
+OrderSchema.methods = {
+  /**
+   * Authenticate - check if the passwords are the same
+   *
+   * @param {String} password
+   * @param {Function} callback
+   * @return {Boolean}
+   * @api public
+   */
+  invoice() {
+    concole.log('aaaaaaaa');
+  }//,
+};
+
 // execute payment
+/*
 OrderSchema.pre('validate', function (next) {
-  if(!this.nonce) { next(); }
-  executePayment(this, function (err, result) {
+  if(!this.invoicedUserID) { next(); }
+  createOrder(this, function (err, result) {
     this.paymentStatus = result;//--
     if(err || !result.success){
       this.status = 'failed. ';// + result.errors + err;
@@ -47,7 +85,8 @@ OrderSchema.pre('validate', function (next) {
 });*/
 
 
-function executePayment(payment, cb){
+function createInvoice(payment, cb){
+
   Braintree.transaction.sale({
     amount: payment.total,
     paymentMethodNonce: payment.nonce,

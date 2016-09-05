@@ -1,10 +1,12 @@
 'use strict';
 
 (function(){
-
+//todo change order id cu invoice id
 class OrderComponent {
-  constructor(Order, $stateParams) {
-    this.message = 'Hello';
+  constructor(Order, $stateParams, Invoice, Auth) {
+    this.Invoice = Invoice;
+    this.Order = Order;
+    this.Auth = Auth;
     this.order = Order.get({id: $stateParams.id});
   }
 
@@ -12,6 +14,17 @@ class OrderComponent {
       order.$remove();
       this.orders.splice(this.orders.indexOf(order), 1);
     }
+
+  test(){
+    console.log('consolaa..');
+    this.order.name = this.Auth.getCurrentUser.name;
+    this.Order.update({ id: this.order._id }, this.order);
+
+  }
+
+  add() {
+    
+  }
 }
 
 class OrdersComponent {
@@ -56,30 +69,35 @@ class OrdersComponent {
     }
 }
 
+
 class CheckoutComponent {
   constructor($scope, $http, $state, ngCart, Order) {//--
     this.errors = '';
     this.ngCart = ngCart;
     this.$http = $http;
     this.$state = $state;
-    //$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
   }
 
-    buy(ngCart) {
+    buy(ngCart, $state) {
     var payload = {};
     var wut = {};
     angular.merge(payload, this.ngCart.toObject());
     payload.total = payload.totalCost;
     console.log(payload);
-    this.$http.post('/api/orders', payload)
+    function go(id){
+      
+    }
+
+    var a = this.$http.post('/api/orders', payload) //use Order object
         .then(function success (data) {
-          wut = angular.toJson(data);
+          
           console.log(data.data._id);
         }, function error (res) {
           //this.errors = res;
         });
-    this.ngCart.empty(true);
-    this.$state.go('orders');
+        console.log(a);
+    //this.ngCart.empty(true);
+     //if logged in completed =  /if not create new user on invoiced website
   }
 
 }

@@ -19,7 +19,6 @@ var customersUrl = 'https://'+ API_KEY + ':@api.sandbox.invoiced.com/customers/'
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
-
 }
 
 function saveUpdates(updates) {
@@ -104,9 +103,8 @@ export function create(req, res) { // req.body == formData ?
    item.quantity = req.body.items[i].quantity;
    invoice.items.push(item);
  }
-//console.log(invoice);
 request.post(  ///patch
-      invoiceUrl,
+      invoiceUrl, // + invoice customer id
       { json: invoice },
       function (error, response, body) {
         console.log('aaaaaaaaaa' + response.body.customer)
@@ -116,27 +114,6 @@ request.post(  ///patch
           }
       }
 );
-/*
-  var invoice = {
-  customer: req.params.customer_id,
-  payment_terms: 'NET 14',
-  items: [],
-  taxes: [{
-    amount: 4
-  }]
- }
-var items = [{
-    name: 'cv',
-    quantity: 4,
-    unit_cost: 3
-  }]
-
- for(var i=0;i<req.body.items.length; i++) {
-   items[i].name = req.body.items[i]._id;
-   items[i].unit_cost = req.body.items[i].total / req.body.items[i].quantity;
-   items[i].quantity = req.body.items[i].quantity;
- }
-console.log(items);*///////////////////////////////////////////////////////////////////
 /*
 Order.findById(req.body.order_id, 'items', function(err, found){
   items = found.items;
