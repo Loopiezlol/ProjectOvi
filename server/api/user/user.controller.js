@@ -32,7 +32,7 @@ export function index(req, res) {
 }
 
 /**
- * Creates a new user
+ * changes user attributes //TODO: only modify shipping billing invoicedId userStatus
  */
 export function changeProfile(req, res, next) {
   if (req.body._id) {

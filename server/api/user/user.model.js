@@ -12,7 +12,7 @@ var UserSchema = new Schema({
   billingAddress: String,
   shippingAddress: String,
   invoicedId:{type: String, default: 'no'}, // request // id
-  userStatus:{type: String, default: 'normal'}, //shop
+  userStatus:{type: Boolean, default: 0}, //shop
   canDelay:{type: Boolean, default: 0}, //1
   email: {
     type: String,

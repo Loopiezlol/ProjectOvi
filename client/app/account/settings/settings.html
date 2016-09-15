@@ -1,5 +1,5 @@
 <div class="container">
-  <button type="button" ng-click="changePassword = !changePass">Change Password</button>
+  <button type="button" ng-click="changePass = !changePass">Change Password</button>
   <button ng-if="vm.user.invoicedId == 'no'" type="button" ng-click="vm.requestInvoiced()">Request Invoiced</button>
   <button ng-if="vm.user.invoicedId == 'request'" type="button">Request sent</button>
   

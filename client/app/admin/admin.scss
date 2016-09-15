@@ -18,3 +18,21 @@
 		}
 	}
 }
+
+.user-control {
+	li {
+		float: right;
+		padding-left: 2vh;
+		border-bottom: none;
+	}
+	a:hover {
+		color: grey;
+		border-bottom: 1px solid green;
+	}
+	.privilege {
+		color: blue;
+	}
+	.invoiced {
+		color: green;
+	}
+}
