@@ -3,28 +3,46 @@
 (function(){
 //todo change order id cu invoice id
 class OrderComponent {
-  constructor(Order, $stateParams, Invoice, Auth) {
-    this.Invoice = Invoice;
+  constructor($stateParams, Invoice, Auth, Order, $state, $scope) {
     this.Order = Order;
     this.Auth = Auth;
     this.order = Order.get({id: $stateParams.id});
+    this.next = 'info';
+    this.user = Auth.getCurrentUser();
+    this.isLoggedIn = Auth.isLoggedIn();    //if(Auth.isLoggedIn()){
+      if(this.isLoggedIn){
+      this.order.name = this.user.name;
+      this.order.shippingAddress = this.user.shippingAddress;
+      this.order.billingAddress = this.user.billingAddress;
+    } else {
+      console.log('Not');
+    }
+    this.totalItems = 64;
+    this.currentPage = 4
   }
 
-  delete(order) {
+  cancelOrder(order) {
       order.$remove();
-      this.orders.splice(this.orders.indexOf(order), 1);
     }
 
-  test(){
-    console.log('consolaa..');
-    this.order.name = this.Auth.getCurrentUser.name;
-    this.Order.update({ id: this.order._id }, this.order);
+   proceed() {
+     this.next = 'payment';
+     if(this.user){//check if undefined
+      console.log(this.user);
+      this.order.name = this.user.name;
+      this.order.shippingAddress = this.user.shippingAddress;
+      this.order.billingAddress = this.user.billingAddress;
+      console.log('sac' +this.user.shippingAddress); //de asemenea daca are invoiced pun invoice user id //la save daca are invoiced id salvez si la order codu invoice-ului respectiv
+    } else {
+      console.log('Not');
+    }
+    //this.$state.transitionTo('order.list');
+   }
 
-  }
-
-  add() {
-    
-  }
+   back() {
+     this.next = 'info';
+    //this.$state.transitionTo('order.list');
+   }
 }
 
 class OrdersComponent {
@@ -53,7 +71,7 @@ class OrdersComponent {
     var payload = {
       order_id: order._id,
       items: order.items,
-    }
+    };
     this.$http.post('/api/invoiced/invoices/49231', payload)
         .then(function success (data) {
           order.status = 'invvoiced';
@@ -69,7 +87,7 @@ class OrdersComponent {
     }
 }
 
-
+//this.$state.go('order', {id: data.data_id});
 class CheckoutComponent {
   constructor($scope, $http, $state, ngCart, Order) {//--
     this.errors = '';
@@ -78,31 +96,60 @@ class CheckoutComponent {
     this.$state = $state;
   }
 
+  $onInit() {
+    
+  }
+
     buy(ngCart, $state) {
     var payload = {};
     var wut = {};
     angular.merge(payload, this.ngCart.toObject());
     payload.total = payload.totalCost;
     console.log(payload);
-    function go(id){
-      
-    }
 
-    var a = this.$http.post('/api/orders', payload) //use Order object
-        .then(function success (data) {
-          
-          console.log(data.data._id);
+    this.$http.post('/api/orders', payload) //use Order object
+        .then((data) => {
+          this.$state.go('order', {id: data.data._id});
         }, function error (res) {
           //this.errors = res;
         });
-        console.log(a);
     //this.ngCart.empty(true);
      //if logged in completed =  /if not create new user on invoiced website
   }
 
 }
 
+//----------------
+//Stripe.setPublishableKey('pk_test_RtMJXSo27JWwzVBUCUbzwcwx');
+//modules: angular-payments
+
+
+
+class StripeController {
+  constructor($scope, $http, $state, ngCart, Order) {
+    $scope.handleStripe = function(status, response){
+        if(response.error) {
+          // there was an error. Fix it.
+        } else {
+          // got stripe token, now charge it or smt
+          token = response.id
+        }
+      }
+  }
+
+  $onInit() {
+    
+  }
+
+    buy(ngCart, $state) {
+
+  }
+
+}
+
 angular.module('projectOviApp')
+  
+
   .component('checkout', {
     templateUrl: 'app/orders/templates/checkout.html',
     controller: CheckoutComponent
@@ -116,6 +163,8 @@ angular.module('projectOviApp')
   .component('order', {
     templateUrl: 'app/orders/templates/order.html',
     controller: OrderComponent
-  });
+  })
+
+  .controller('StripeController', StripeController);
 
 })();

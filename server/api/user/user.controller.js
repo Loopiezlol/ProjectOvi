@@ -34,6 +34,33 @@ export function index(req, res) {
 /**
  * Creates a new user
  */
+export function changeProfile(req, res, next) {
+  if (req.body._id) {
+    delete req.body._id;
+  }
+
+  var userId = req.params.id;
+
+
+  return User.findById(userId).exec()
+    .then(user => {
+      if (1) {
+        user.shippingAddress = req.body.shippingAddress;
+        user.billingAddress = req.body.billingAddress;
+        return user.save()
+          .then(() => {
+            res.status(204).end();
+          })
+          .catch(validationError(res));
+      } else {
+        return res.status(403).end();
+      }
+    });
+}
+
+/**
+ * Creates a new user
+ */
 export function create(req, res, next) {
   var newUser = new User(req.body);
   newUser.provider = 'local';

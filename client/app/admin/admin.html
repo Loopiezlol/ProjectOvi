@@ -5,6 +5,8 @@
 	    <div class="user-info">
 	        <strong>{{user.name}}</strong><br>
 	        <span class="text-muted">{{user.email}}</span>
+          <label class="text-muted">has Invoiced: {{user.invoicedId}}</label>
+          <label class="text-muted">has Invoiced: {{user.userStatus}}</label>
 	    </div>
         <a ng-click="admin.delete(user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
     </li>

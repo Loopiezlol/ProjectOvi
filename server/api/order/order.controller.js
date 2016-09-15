@@ -73,7 +73,7 @@ export function index(req, res) {
 
 // Gets a single Order from the DB
 export function show(req, res) {
-  Order.invoice()
+  //Order.invoice()
   return Order.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))

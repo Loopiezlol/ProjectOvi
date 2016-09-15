@@ -9,6 +9,11 @@ const authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
   name: String,
+  billingAddress: String,
+  shippingAddress: String,
+  invoicedId:{type: String, default: 'no'}, // request // id
+  userStatus:{type: String, default: 'normal'}, //shop
+  canDelay:{type: Boolean, default: 0}, //1
   email: {
     type: String,
     lowercase: true,

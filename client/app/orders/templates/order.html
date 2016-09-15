@@ -1,78 +1,67 @@
 
-<div class="container">
-    <h1>Enter your details</h1>
-        <div class="container">
 
+    
+        <div class="container">
+<h1>Checkout</h1>
 
             <div class="row">
 
-                <div class="card col-md-9"<!---->
-                    <h3 style="border-bottom: 1px solid black">Info:</h3>
+                <div class="card col-md-9">
                     
-                    <input type="text" class="form-control" placeholder="$ctrl.order.name" ng-model="$ctrl.order.name">
-                <input type="text" class="form-control" placeholder="$ctrl.order.shippingAddress" ng-model="$ctrl.order.shippingAddress">
-                <input type="number" class="form-control" placeholder="$ctrl.order.billingAddress" ng-model="$ctrl.order.billingAddress">
+                    
+                
+                <!-- onload='myFunction()'-->
+                <!--<div ng-include src="'client/app/orders/templates/info.html'" ></div>-->
+                <a ui-sref="listoasa"></a><!--pasez direct string la functia proceed-->
+                <div ui-view></div>
 
-                    <h2>Status:</h2>
-                <label>order ID: {{$ctrl.order._id}}</label>
-                <label>order ID: {{$ctrl.order.name}}</label>
-                <label>order ID: {{$ctrl.order.billingAddress}}</label>
-                <label>order ID: {{$ctrl.order.shippingAddress}}</label>
-                    <p>User/Buyer ID: {{$ctrl.order.user}} non existent if not logged in</p>
-                  <p>Order status: {{$ctrl.order.status}}</p>
-                    <p> Payment type: {{$ctrl.order.paymentType}}</p>
-                    <p> Invoice ID {{$ctrl.order.invoicedID}} after invoice is sent</p>
-                    <p> Invoiced User ID: {{$ctrl.order.invoicedUserID}} only if user is logged into an invoice linked account</p>
+                <h4>Pager</h4>
+                <pre>You are currently on page {{$ctrl.currentPage}}</pre>
+                <ul uib-pager total-items="$ctrl.totalItems" ng-model="$ctrl.currentPage">
+                    <li>Stuff</li>
+                    <li>Stuff</li>
+                </ul>
+
+                <button ng-show="$ctrl.next == 'payment'" class="btn btn-success" ng-click="$ctrl.back()">Back to info</button>
+                <button ng-show="$ctrl.next == 'info'" class="btn btn-success" ng-click="$ctrl.proceed()">Proceed to payment</button>
+                
+
+                <div class="animate enter-bounceInDown exit-bounceOutUp" ng-show="$ctrl.next == 'info'">
+                    <div ng-include="'app/orders/templates/user.info.html'"></div>
+                </div>
+
+                <div class="animate enter-bounceInDown exit-bounceOutUp" ng-show="$ctrl.next == 'payment'">
+                    <div ng-include="'app/orders/templates/payment.html'"></div>
+                </div>
+
+                
+
+                
+                    
                 </div>
 
                 <div class="col-md-2">
-                    <h2>Invoice</h2>
-                    <p>items: {{$ctrl.order.items}}</p>
-                   <p> shipping: {{$ctrl.order.shipping}}</p>
-              <p>      tax: {{$ctrl.order.tax}}</p>
-                   <p> discount: {{$ctrl.order.discount}}</p>
-     <p>               subTotal: {{$ctrl.order.subTotal}}</p>
+                  <h2>Invoice</h2>
+                  <p>items: {{$ctrl.order.items}}</p>
+                  <p> shipping: {{$ctrl.order.shipping}}</p>
+                  <p>tax: {{$ctrl.order.tax}}</p>
+                  <p> discount: {{$ctrl.order.discount}}</p>
+                  <p>subTotal: {{$ctrl.order.subTotal}}</p>
                   <p>  total: {{$ctrl.order.total}}</p>
                   <a ng-click="$ctrl.addDetails()">Next</a>
+
+                  <h2>Status:</h2>
+                  <label>order ID: {{$ctrl.order._id}}</label>
+                  <label>name: {{$ctrl.order.name}}</label>
+                  <label>BillingAddress: {{$ctrl.order.billingAddress}}</label>
+                  <label>Shipping address: {{$ctrl.order.shippingAddress}}</label>
+                  <p>User/Buyer ID: {{$ctrl.order.user}} non existent if not logged in</p>
+                  <p>Order status: {{$ctrl.order.status}}</p>
+                  <p> Payment type: {{$ctrl.order.paymentType}}</p>
+                  <p> Invoice ID {{$ctrl.order.invoicedID}} after invoice is sent</p>
+                  <p> Invoiced User ID: {{$ctrl.order.invoicedUserID}} only if user is logged into an invoice linked account</p>
+
                 </div>
              </div>
          </div>
-            <div class="row">
-                <div class="col-md-10">
-                    <div ng-if="$ctrl.edit" class="card">
-    <div class="container">
-        <form class="product-form">
-            <label></label>
-            <p class="input-group">
-                <input type="text" class="form-control" placeholder="product name" ng-model="$ctrl.order.name">
-                <input type="text" class="form-control" placeholder="product info" ng-model="$ctrl.order.shippingAddress">
-                <input type="number" class="form-control" placeholder="product price" ng-model="$ctrl.order.billingAddress">
-                <p>order ID{{$ctrl.order._id}}</p>
-                    <p>Buyer: {{$ctrl.order.name}}</p>
-                    <p>User/Buyer ID{{$ctrl.order.user}}</p>
-                    <p>Buyer Address:{{$ctrl.order.shippingAddress}}</p>
-                    <p>Buyer billing address:{{$ctrl.order.billingAddress}}</p>
-
-                    <p>items: {{$ctrl.order.items}}</p>
-                   <p> shipping: {{$ctrl.order.shipping}}</p>
-              <p>      tax: {{$ctrl.order.shipping}}</p>
-                   <p> discount: {{$ctrl.order.discount}}</p>
-     <p>               subTotal: {{$ctrl.order.subTotal}}</p>
-                  <p>  total: {{$ctrl.order.total}}</p>
-
-                  <p>$ctrl.Order status: {{$ctrl.order.status}}</p>
-                    <p> Payment type: {{$ctrl.order.paymentType}}</p>
-                    <p> Invoice ID {{$ctrl.order.invoicedID}}</p>
-                    <p> Invoiced User ID: {{$ctrl.order.invoicedUserID}}</p>
-                <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="$ctrl.changeProduct()">Add Newss</button></span>
-            </p>
-        </form>
-    </div>
-</div>
-                </div>
-            </div>
-</div>
-
-
-<button type="button" ng-click="$ctrl.test()">Test</button>
+            

@@ -14,9 +14,13 @@ angular.module('projectOviApp', [
   'angular-parallax',
   'ngFileUpload',
   'ngCart',
-  'duScroll'
+  'duScroll',
+  'angularPayments'
 ])
-  .config(function($urlRouterProvider, $locationProvider) {
+
+
+  .config(function($urlRouterProvider, $locationProvider/*, $window*/) {
+   // $window.Stripe.setPublishableKey('pk_test_RtMJXSo27JWwzVBUCUbzwcwx');
     $urlRouterProvider
       .otherwise('/');
 

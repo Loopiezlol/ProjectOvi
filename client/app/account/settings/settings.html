@@ -1,51 +1,90 @@
 <div class="container">
+  <button type="button" ng-click="changePassword = !changePass">Change Password</button>
+  <button ng-if="vm.user.invoicedId == 'no'" type="button" ng-click="vm.requestInvoiced()">Request Invoiced</button>
+  <button ng-if="vm.user.invoicedId == 'request'" type="button">Request sent</button>
+  
   <div class="row">
-    <div class="col-sm-12">
-      <h1>Change Password</h1>
+    <div class="col-md-6">
+      <label>Hello</label>
+      <h3>{{vm.user.name}}</h3>
+      <div ng-if="vm.user.shippingAddress == 'noAddress'">
+        <p>No address</p>
+      </div>
+      <div ng-if="vm.user.shippingAddress != 'noAddress'">
+        <button type="button" ng-click='changeAddr = !changeAddr'>Change Password</button><!---->
+      </div>
+      <div ng-if="vm.user.shippingAddress == 'noAddress'">
+        <button type="button" ng-click="changeAddr = !changeAddr">Add Address</button><!---->
+      </div>
+
+      <div ng-if="vm.user.shippingAddress != 'noAddress'">
+        <label>Shipping Address</label>
+        <p>{{vm.user.shippingAddress}}</p>
+        <label>Billing Address</label>
+        <p>{{vm.user.billingAddress}}</p>
+      </div>
     </div>
-    <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="vm.changePassword(form)" novalidate>
+    <div ng-if="!changeAddr" class="col-md-6">
+      <div><!---->
+         <h2 style="border-bottom: 1px solid black">Enter your shipping/billing info</h2>
+         Shipping address
+         <input type="text" class="form-control" placeholder="{{vm.user.shippingAddress}}" ng-model="vm.user.shippingAddress">
+         BillingAddress
+         <input type="text" class="form-control" placeholder="{{vm.user.billingAddress}}" ng-model="vm.user.billingAddress">
+         <button type="button" ng-click="vm.changeUser(vm.user)">Update Address</button>
+      </div>
+    </div>
+  </div>
 
-        <div class="form-group">
-          <label>Current Password</label>
+  <div ng-if="changePass">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Change Password</h1>
+      </div>
+      <div class="col-sm-12">
+        <form class="form" name="form" ng-submit="vm.changePassword(form)" novalidate>
 
-          <input type="password" name="password" class="form-control" ng-model="vm.user.oldPassword"
-                 mongoose-error/>
-          <p class="help-block" ng-show="form.password.$error.mongoose">
-              {{ vm.errors.other }}
-          </p>
-        </div>
+          <div class="form-group">
+            <label>Current Password</label>
 
-        <div class="form-group">
-          <label>New Password</label>
+            <input type="password" name="password" class="form-control" ng-model="vm.user.oldPassword"
+                  mongoose-error/>
+            <p class="help-block" ng-show="form.password.$error.mongoose">
+                {{ vm.errors.other }}
+            </p>
+          </div>
 
-          <input type="password" name="newPassword" class="form-control" ng-model="vm.user.newPassword"
-                 ng-minlength="3"
-                 required/>
-          <p class="help-block"
-             ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || vm.submitted)">
-            Password must be at least 3 characters.
-          </p>
-        </div>
+          <div class="form-group">
+            <label>New Password</label>
 
-        <div class="form-group">
-          <label>Confirm New Password</label>
+            <input type="password" name="newPassword" class="form-control" ng-model="vm.user.newPassword"
+                  ng-minlength="3"
+                  required/>
+            <p class="help-block"
+              ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || vm.submitted)">
+              Password must be at least 3 characters.
+            </p>
+          </div>
 
-          <input type="password" name="confirmPassword" class="form-control" ng-model="vm.user.confirmPassword"
-                 match="vm.user.newPassword"
-                 ng-minlength="3"
-                 required=""/>
-          <p class="help-block"
-             ng-show="form.confirmPassword.$error.match && vm.submitted">
-            Passwords must match.
-          </p>
+          <div class="form-group">
+            <label>Confirm New Password</label>
 
-        </div>
+            <input type="password" name="confirmPassword" class="form-control" ng-model="vm.user.confirmPassword"
+                  match="vm.user.newPassword"
+                  ng-minlength="3"
+                  required=""/>
+            <p class="help-block"
+              ng-show="form.confirmPassword.$error.match && vm.submitted">
+              Passwords must match.
+            </p>
 
-        <p class="help-block"> {{ vm.message }} </p>
+          </div>
 
-        <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
-      </form>
+          <p class="help-block"> {{ vm.message }} </p>
+
+          <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

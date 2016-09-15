@@ -12,6 +12,11 @@
 
           <input type="text" name="name" class="form-control" ng-model="vm.user.name"
                  required/>
+
+          <label>Status(normal/shop)</label><!-- choose just between normal and shop -->
+
+          <input type="text" name="name" class="form-control" ng-model="vm.user.userStatus"/>
+
           <p class="help-block" ng-show="form.name.$error.required && vm.submitted">
             A name is required
           </p>

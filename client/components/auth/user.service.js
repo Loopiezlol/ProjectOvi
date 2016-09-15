@@ -6,6 +6,12 @@ function UserResource($resource) {
   return $resource('/api/users/:id/:controller', {
     id: '@_id'
   }, {
+    update: {
+      method: 'PATCH',
+      params: {
+        controller: 'changeProfile'
+      }
+    },
     changePassword: {
       method: 'PUT',
       params: {

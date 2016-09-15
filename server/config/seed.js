@@ -7,24 +7,28 @@
 import User from '../api/user/user.model';
 import Product from '../api/product/product.model';
 
-// User.find({}).remove()
-//   .then(() => {
-//     User.create({
-//       provider: 'local',
-//       name: 'Test User',
-//       email: 'test@example.com',
-//       password: 'test'
-//     }, {
-//       provider: 'local',
-//       role: 'admin',
-//       name: 'Admin',
-//       email: 'admin@example.com',
-//       password: 'admin'
-//     })
-//     .then(() => {
-//       console.log('finished populating users');
-//     });
-//   });
+User.find({}).remove()
+  .then(() => {
+    User.create({
+      provider: 'local',
+      billingAddress: 'noAddress',
+      shippingAddress: 'noAddress',
+      name: 'Test User',
+      email: 'test@example.com',
+      password: 'test'
+    }, {
+      provider: 'local',
+      billingAddress: 'Dunarea',
+      shippingAddress: 'tot',
+      role: 'admin',
+      name: 'Admin',
+      email: 'admin@example.com',
+      password: 'admin'
+    })
+    .then(() => {
+      console.log('finished populating users');
+    });
+  });
 
  Product.find({}).remove()
    .then(() => {

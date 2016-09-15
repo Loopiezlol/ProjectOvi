@@ -5,9 +5,7 @@ angular.module('projectOviApp')
     $stateProvider
       .state('login', {
         url: '/login',
-        templateUrl: 'app/account/login/login.html',
-        controller: 'LoginController',
-        controllerAs: 'vm'
+        template: '<login></login>'
       })
       .state('logout', {
         url: '/logout?referrer',
