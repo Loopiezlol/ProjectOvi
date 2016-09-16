@@ -36,8 +36,6 @@ var OrderSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User' },
   shippingAddress: String,
   billingAddress: String,
-  //ovi
-
   // price details
   items: [OrderDetailsSchema],
   shipping: {type: Number, get: getPrice, set: setPrice, default: 0.0 },
@@ -45,12 +43,12 @@ var OrderSchema = new Schema({
   discount: {type: Number, get: getPrice, set: setPrice, default: 0.0 },
   subTotal: {type: Number, get: getPrice, set: setPrice },
   total: {type: Number, get: getPrice, set: setPrice, required: true },
-  // invoiced info
+  // payment info
   dueDate: {type: Date, default: Date.now()},
   status: { type: String, default: 'pending' }, // pending, paid/ failed, delivered, canceled, refunded.
-  paymentType: { type: String, default: 'Invoiced' }, //stripe
+  paymentType: { type: String, default: 'Invoiced' }, //Stripe
   invoicedId: String,
-  invoicedUserId: String
+  stripeId: String
 });
 
 OrderSchema.methods = {

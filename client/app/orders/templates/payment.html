@@ -1,5 +1,13 @@
 <div class="container" ng-controller="StripeController">
     <h2>Payment</h2>
+    <div ng-if="bycard != 1">
+    <input type="checkbox" name="Invoiced" ng-model="byinvoiced"> Invoiced<br>
+    </div>
+    <div ng-if="byinvoiced != 1">
+    <input type="checkbox" name="Stripe" ng-model="bycard"> By card<br>
+    </div>
 
+    <div ng-if="!bycard">
     <div ng-include="'app/orders/templates/stripe.html'"></div>
+    </div>
 </div>

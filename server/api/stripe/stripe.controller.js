@@ -11,8 +11,8 @@
 'use strict';
 
 import jsonpatch from 'fast-json-patch';
-import Stripe from './stripe.model';
-//var stripes = require("stripe")("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
+//import Stripe from './stripe.model';
+var stripe = require("stripe")("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -65,36 +65,49 @@ function handleError(res, statusCode) {
 }
 
 // Gets a list of Stripes
-export function index(req, res) {
-  return Stripe.find().exec()
-    .then(respondWithResult(res))
-    .catch(handleError(res));
+export function tokenize(req, res) {
+  stripe.tokens.create({
+  card: {
+    "number": '4000056655665556',
+    "exp_month": '09',
+    "exp_year": '2018',
+    "cvc": '518'
+  }
+}, function(err, token) {
+  res.send(token);
+});
+
 }
 
 // Gets a single Stripe from the DB
-export function show(req, res) {
-  return Stripe.findById(req.params.id).exec()
-    .then(handleEntityNotFound(res))
-    .then(respondWithResult(res))
-    .catch(handleError(res));
+export function createcustomer(req, res) {
+  stripe.customers.create({
+    description: 'Customer for test',
+    source: "tok_18uKV02eZvKYlo2CUfvCLqOW" // obtained with Stripe.js
+  }, function(err, customer) {
+    if(err){
+      res.send(err);
+    } else {
+      res.send(customer);
+    }
+  });
 }
 
 // Creates a new Stripe in the DB
-export function create(req, res) {
+export function charge(req, res) {
   var stripeToken = req.body.stripeToken;
  
 	var charge = stripe.charges.create({
 		amount: 1000, // amount in cents, again
 		currency: "usd",
-		card: stripeToken,
+		customer: req.params.customer_id, //existing customer id
 		description: "payinguser@example.com"
 	}, function(err, charge) {
-		if (err && err.type === 'StripeCardError') {
-			// The card has been declined
-		} else {
-			//Render a thank you page called "Charge"
-			res.render('charge', { title: 'Charge' });
-		}
+		if(err){
+      res.send(err);
+    } else {
+      res.send(charge);
+    }
 	});
 }
 

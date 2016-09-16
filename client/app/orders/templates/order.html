@@ -15,12 +15,7 @@
                 <a ui-sref="listoasa"></a><!--pasez direct string la functia proceed-->
                 <div ui-view></div>
 
-                <h4>Pager</h4>
-                <pre>You are currently on page {{$ctrl.currentPage}}</pre>
-                <ul uib-pager total-items="$ctrl.totalItems" ng-model="$ctrl.currentPage">
-                    <li>Stuff</li>
-                    <li>Stuff</li>
-                </ul>
+                
 
                 <button ng-show="$ctrl.next == 'payment'" class="btn btn-success" ng-click="$ctrl.back()">Back to info</button>
                 <button ng-show="$ctrl.next == 'info'" class="btn btn-success" ng-click="$ctrl.proceed()">Proceed to payment</button>

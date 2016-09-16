@@ -9,11 +9,7 @@ const authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
   name: String,
-  billingAddress: String,
-  shippingAddress: String,
-  invoicedId:{type: String, default: 'no'}, // request // id
-  userStatus:{type: Boolean, default: 0}, //shop
-  canDelay:{type: Boolean, default: 0}, //1
+  details: String,// {type: mongoose.Schema.Types.ObjectId, ref: 'Details'}
   email: {
     type: String,
     lowercase: true,
