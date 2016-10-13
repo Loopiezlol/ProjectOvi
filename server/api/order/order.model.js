@@ -45,50 +45,17 @@ var OrderSchema = new Schema({
   total: {type: Number, get: getPrice, set: setPrice, required: true },
   // payment info
   dueDate: {type: Date, default: Date.now()},
-  status: { type: String, default: 'pending' }, // pending, paid/ failed, delivered, canceled, refunded.
+  status: { type: String, default: 'pending' }, // pending/failed/received/canceled/refunded
   paymentType: { type: String, default: 'Invoiced' }, //Stripe
   invoicedId: String,
   stripeId: String
 });
 
 OrderSchema.methods = {
-  /**
-   * Authenticate - check if the passwords are the same
-   *
-   * @param {String} password
-   * @param {Function} callback
-   * @return {Boolean}
-   * @api public
-   */
   invoice() {
     concole.log('aaaaaaaa');
-  }//,
+  }
 };
-
-// execute payment
-/*
-OrderSchema.pre('validate', function (next) {
-  if(!this.invoicedUserID) { next(); }
-  createOrder(this, function (err, result) {
-    this.paymentStatus = result;//--
-    if(err || !result.success){
-      this.status = 'failed. ';// + result.errors + err;
-      next(err || result.errors);
-    } else {
-      this.status = 'paid';//----
-      next();
-    }
-  }.bind(this));
-});*/
-
-
-function createInvoice(payment, cb){
-
-  Braintree.transaction.sale({
-    amount: payment.total,
-    paymentMethodNonce: payment.nonce,
-  }, cb);
-}
 
 function getPrice(num){
     return (num/100).toFixed(2);

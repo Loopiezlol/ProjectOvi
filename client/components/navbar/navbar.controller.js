@@ -5,7 +5,7 @@ class NavbarController {
   menu = [{
     'title': 'Home',
     'state': 'main'
-  }, { 
+  }, {
       'title': 'Products',
       'state': 'products'
     }];
@@ -13,17 +13,34 @@ class NavbarController {
   isCollapsed = true;
   //end-non-standard
 
-  constructor(Auth, $state, Details) {
+  constructor(Auth, $state, Details, $rootScope, $scope) {
+    //INITIALS
+
+    //user details
+    this.getCurrentUser = Auth.getCurrentUser;
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;
-    this.getCurrentUser = Auth.getCurrentUser;
-    if(this.isLoggedIn()){this.details = Details.get({id: this.getCurrentUser().userDetails});}
-
+    this.return = 0;
+    Auth.getCurrentUser((user) => {
+      this.userDetails = Details.get({ id: user.details }, () => {
+          console.log(this.userDetails)
+        });
+    })
+    //SERVICES
+    this.Auth = Auth;
+    this.Details = Details;
+    //TOOLS
+    this.$rootScope = $rootScope;
     this.$state = $state;
+
   }
 
-  resume() {
-    this.$state.go('order', {id: this.details.activeOrder});
+  $onInit() {
+
+  }
+
+  resumeOrder() {
+    this.$state.go(this.userDetails.orderState);
   }
 
 }

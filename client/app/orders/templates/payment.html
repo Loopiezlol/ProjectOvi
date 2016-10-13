@@ -1,13 +1,42 @@
-<div class="container" ng-controller="StripeController">
+<div class="container">
     <h2>Payment</h2>
+
     <div ng-if="bycard != 1">
-    <input type="checkbox" name="Invoiced" ng-model="byinvoiced"> Invoiced<br>
+        <input type="checkbox" name="Invoiced" ng-model="$ctrl.invoiced"> Invoiced<br>
     </div>
     <div ng-if="byinvoiced != 1">
-    <input type="checkbox" name="Stripe" ng-model="bycard"> By card<br>
+        <input type="checkbox" name="Stripe" ng-model="$ctrl.stripe"> By card<br>
     </div>
 
-    <div ng-if="!bycard">
-    <div ng-include="'app/orders/templates/stripe.html'"></div>
+    <div ng-if="$ctrl.invoiced">
+        <div class="invoiced">
+            <h2>Invoiced</h2>
+            <button type="button" ng-click="">Confirm</button>
+        </div>
+    </div>
+
+    <div ng-if="$ctrl.stripe">
+        <div class="span4">
+            <h3>Enter your card details</h3>
+            <!--<input type="text" ng-model="card.number" cc-number cc-type="cardType" ng-required="true" />-->
+
+            <form name="paymentForm" ng-submit="$ctrl.sendCard(card)">
+                <label>Card number</label>
+                <input type="text" ng-model="card.cardNumber" /><br>
+                <label>CVC</label>
+                <input type="text" ng-model="card.cvc" ng-required="true" /><br>
+                <!-- cc-cvc -->
+                <label>Month year</label>
+                <div cc-exp>
+                    <input ng-model="card.exp_month" cc-exp-month ng-required="true" /><br>
+                    <input ng-model="card.exp_year" cc-exp-year ng-required="true" />
+                </div>
+                <button type="submit">Send</button>
+            </form>
+
+
+
+
+        </div>
     </div>
 </div>

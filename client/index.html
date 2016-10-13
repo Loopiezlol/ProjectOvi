@@ -14,7 +14,8 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
-      <link rel="stylesheet" href="bower_components/nz-animate/dist/nzAnimate.min.css" />
+      <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+      <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -30,7 +31,7 @@
 
     <!-- Add your site or application content here -->
     <navbar></navbar>
-    <div ui-view=""></div>
+    <div ui-view></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <!-- <script>
@@ -65,10 +66,13 @@
       <script src="bower_components/ngCart/dist/ngCart.js"></script>
       <script src="bower_components/angular-scroll/angular-scroll.js"></script>
       <script src="bower_components/angular-animate/angular-animate.js"></script>
+      <script src="bower_components/angular-credit-cards/release/angular-credit-cards.js"></script>
+      <script src="bower_components/angular-aria/angular-aria.js"></script>
+      <script src="bower_components/angular-messages/angular-messages.js"></script>
+      <script src="bower_components/angular-material/angular-material.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
       <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-      <script src="bower_components/angular-payments/lib/angular-payments.min.js"></script>
       <script>
   
 </script>
@@ -92,6 +96,7 @@
       <script src="app/orders/orders.js"></script>
       <script src="app/products/products.controller.js"></script>
       <script src="app/products/products.js"></script>
+      <script src="components/Invoiced/invoiced.service.js"></script>
       <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/interceptor.service.js"></script>
       <script src="components/auth/router.decorator.js"></script>
@@ -107,6 +112,7 @@
       <script src="components/order/order.service.js"></script>
       <script src="components/product/product.service.js"></script>
       <script src="components/socket/socket.service.js"></script>
+      <script src="components/stripe/stripe.service.js"></script>
       <script src="components/util/util.service.js"></script>
       <!-- endinjector -->
     <!-- endbuild -->

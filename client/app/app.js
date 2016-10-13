@@ -15,12 +15,12 @@ angular.module('projectOviApp', [
   'ngFileUpload',
   'ngCart',
   'duScroll',
-  'angularPayments'
+  'credit-cards',
+  'ngMaterial'
 ])
 
 
-  .config(function($urlRouterProvider, $locationProvider/*, $window*/) {
-   // $window.Stripe.setPublishableKey('pk_test_RtMJXSo27JWwzVBUCUbzwcwx');
+  .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
       .otherwise('/');
 

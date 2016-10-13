@@ -13,6 +13,10 @@ class LoginController {
     this.$scope = $scope;
   }
 
+  $onInit() {
+    //if(this.Auth.isLoggedIn()){this.$state.go('catalog');}
+  }
+
   login(form) {
     this.submitted = true;
 
@@ -23,7 +27,7 @@ class LoginController {
       })
       .then(() => {
         //BUG
-        if(this.$state.current.name != 'orders'){
+        if(this.$state.current.current != 'orders'){
           console.log(this.$state.name)
           //this.$state.go('catalog');
           this.$window.location.reload(); //

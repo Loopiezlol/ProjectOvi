@@ -66,14 +66,17 @@ function handleError(res, statusCode) {
 
 // Gets a list of Stripes
 export function tokenize(req, res) {
+  console.log(req.body);
   stripe.tokens.create({
   card: {
-    "number": '4000056655665556',
-    "exp_month": '09',
-    "exp_year": '2018',
-    "cvc": '518'
+    "number": req.body.cardNumber,
+    "exp_month": req.body.month,
+    "exp_year": req.body.year,
+    "cvc": req.body.cvc
   }
 }, function(err, token) {
+  console.log(err);
+  console.log(token);
   res.send(token);
 });
 
@@ -82,12 +85,14 @@ export function tokenize(req, res) {
 // Gets a single Stripe from the DB
 export function createcustomer(req, res) {
   stripe.customers.create({
-    description: 'Customer for test',
-    source: "tok_18uKV02eZvKYlo2CUfvCLqOW" // obtained with Stripe.js
+    description: req.body.description,
+    source: req.body.token // obtained with Stripe.js
   }, function(err, customer) {
     if(err){
+      console.log(err);
       res.send(err);
     } else {
+      console.log(customer);
       res.send(customer);
     }
   });
@@ -95,17 +100,20 @@ export function createcustomer(req, res) {
 
 // Creates a new Stripe in the DB
 export function charge(req, res) {
-  var stripeToken = req.body.stripeToken;
- 
+  var stripeToken = req.body.stripeToken;//can sharge without user
+
+ console.log('customer id:' + req.body.customer_id + ':');
 	var charge = stripe.charges.create({
-		amount: 1000, // amount in cents, again
-		currency: "usd",
-		customer: req.params.customer_id, //existing customer id
-		description: "payinguser@example.com"
+		amount: req.body.amount, // amount in cents, again
+		currency: req.body.currency, //usd
+		customer: req.body.customer_id, //existing customer id
+		description: req.body.description
 	}, function(err, charge) {
 		if(err){
+      console.log(err);
       res.send(err);
     } else {
+      console.log(err)
       res.send(charge);
     }
 	});

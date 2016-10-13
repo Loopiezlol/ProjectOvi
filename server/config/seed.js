@@ -8,44 +8,7 @@ import User from '../api/user/user.model';
 import Product from '../api/product/product.model';
 import Details from '../api/userdetails/userdetails.model';
 
-User.find({}).remove()
-  .then(() => {
-    User.create({
-      provider: 'local',
-      details: '43217',
-      name: 'Test User',
-      email: 'test@example.com',
-      password: 'parola'
-    }, {
-      provider: 'local',
-      details: '43210',
-      role: 'admin',
-      name: 'Admin',
-      email: 'admin@example.com',
-      password: 'admin'
-    }, {
-      provider: 'local',
-      details: '43211',
-      name: 'Ion',
-      email: 'ion@example.com',
-      password: 'parola'
-    }, {
-      provider: 'local',
-      details: '43219',
-      name: 'Alexandru',
-      email: 'alexandru@example.com',
-      password: 'parola'
-    }, {
-      provider: 'local',
-      details: '43212',
-      name: 'Cristi',
-      email: 'cristi@example.com',
-      password: 'parola'
-    })
-    .then(() => {
-      console.log('finished populating users');
-    });
-  });
+
 
 Product.find({}).remove()
   .then(() => {
@@ -97,6 +60,45 @@ Product.find({}).remove()
     })
     .then(() => {
       console.log('finished populating products');
+    });
+  });
+
+  User.find({}).remove()
+  .then(() => {
+    User.create({
+      provider: 'local',
+      details: '43217',
+      name: 'Test User',
+      email: 'test@example.com',
+      password: 'parola'
+    }, {
+      provider: 'local',
+      details: '43210',
+      role: 'admin',
+      name: 'Admin',
+      email: 'admin@example.com',
+      password: 'admin'
+    }, {
+      provider: 'local',
+      details: '43211',
+      name: 'Ion',
+      email: 'ion@example.com',
+      password: 'parola'
+    }, {
+      provider: 'local',
+      details: '43219',
+      name: 'Alexandru',
+      email: 'alexandru@example.com',
+      password: 'parola'
+    }, {
+      provider: 'local',
+      details: '43212',
+      name: 'Cristi',
+      email: 'cristi@example.com',
+      password: 'parola'
+    })
+    .then(() => {
+      console.log('finished populating users');
     });
   });
 

@@ -1,16 +1,9 @@
-   
-    <h2 style="border-bottom: 1px solid black">Enter your info</h2>
-    Name
-    <input type="text" class="form-control" ng-model="$ctrl.order.name" placeholder="{{$ctrl.user.name}}">
-        Shipping address
-                    <input type="text" class="form-control" placeholder="{{$ctrl.user.shippingAddress}}" ng-model="$ctrl.order.shippingAddress">
-                    BillingAddress
-                    <input type="text" class="form-control" placeholder="{{$ctrl.user.billingAddress}}" ng-model="$ctrl.order.billingAddress">
-    <div ng-hide="$ctrl.isLoggedIn">
-        <button type="button" ng-click="login = !login"> Login to save your details</button>
-        <div ng-if="login">
-            <div class="loginn">
-            <login></login>
-            </div>
-        </div>
-    </div>
+<h2 style="border-bottom: 1px solid black">
+    Enter your info</h2>
+Name
+<input type="text" class="form-control" ng-model="$ctrl.order.name" placeholder="Buyer name"> Shipping address
+<input type="text" class="form-control" ng-model="$ctrl.order.shippingAddress" placeholder="shippingAddress">BillingAddress
+<input type="text" class="form-control" ng-model="$ctrl.order.billingAddress" placeholder="billingAddress">
+
+<md-button ng-hide="$ctrl.isLoggedIn()" ng-click="login = !login">Login to fill details</md-button>
+<login ng-show="!$ctrl.isLoggedIn() && login"></login>
