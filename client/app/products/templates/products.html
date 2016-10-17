@@ -1,41 +1,98 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
-            <div class="row">
-                <div class="card col-md-4" ng-repeat="product in $ctrl.products">
-                    <p>{{product._id}}</p>
-                    <p>{{product.name}}</p>
-                    <p>{{product.info}}</p>
-                    <p>{{product.price}}</p>
-                    <a ng-click="$ctrl.delete(product)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
-                    <a ng-click="$ctrl.go(product._id)" class="trash"><span class="fa fa-fa-angle-right fa-2x"></span>go</a>
-                    <ngcart-addtocart id="{{product._id}}" quantity="1" quantity-max="9" name="{{product.name}}" price="{{product.price}}" template-url="components/ngCart/addtocart.html" data="product">Add to Cart</ngcart-addtocart>
-
+        <div class="row">
+            <div class="col-md-8">
+                <div class="flex-tl-r">
+                    <h2 style="margin-left: 4vh;">Cake manager</h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="flex-tr-r">
+                    <md-button ng-hide="$ctrl.edit" type="button" class="" ng-click="$ctrl.newProduct()">Create a new cake!</md-button>
+                    <md-button ng-show="$ctrl.showForm" type="button" class="" ng-click="$ctrl.cancelActions()">Cancel</md-button>
                 </div>
             </div>
         </div>
+        <div class="col-md-8">
+            <div class="product-list col-md-6" ng-repeat="product in $ctrl.products | reverse">
 
-        <div class="card col-md-3">
-            <h2>Make a product</h2>
-
-
-
-            <form class="product-form">
-                <p class="input-group">
-                    <input type="text" class="form-control" placeholder="product name" ng-model="$ctrl.newProduct.name">
-                    <input type="text" class="form-control" placeholder="product info" ng-model="$ctrl.newProduct.info">
-                    <input type="number" class="form-control" placeholder="product price" ng-model="$ctrl.newProduct.price">
-                    <button type="submit" class="btn btn-primary" ng-click="$ctrl.addProduct()">Add New</button>
-                </p>
-            </form>
-
-            <div ng-show="errors" class="alert alert-danger" role="alert">
-                <strong>Error(s):</strong>
-                <p>{{errors}}</p>
+                <md-card class="animated fadeInRight">
+                    <div class="product-thumbnail">
+                        <img ng-show="product.imageUrl != ''" class="thmb md-card-image" ng-src="{{product.imageUrl[0]}}" alt="No image" />
+                        <p ng-hide="product.imageUrl != ''">No image</p>
+                    </div>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">{{product.name}}</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <p>{{product.info}}</p>
+                        <p>{{product.price}}$</p>
+                        <p>{{product._id}}</p>
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <ngcart-addtocart id="{{product._id}}" quantity="1" quantity-max="9" name="{{product.name}}" price="{{product.price}}" template-url="components/ngCart/addtocart.html" data="product">Add to Cart</ngcart-addtocart>
+                        <md-button ng-click="$ctrl.deleteProduct(product)">Delete</md-button>
+                        <md-button ng-click="$ctrl.editProduct(product)">Edit</md-button>
+                        <md-button ui-sref="product({id: product._id})"><span class="fa fa-fa-angle-right fa-2x"></span>Profile</md-button>
+                    </md-card-actions>
+                </md-card>
             </div>
+        </div>
+
+        <div class="card col-md-4">
+            <div ng-show="$ctrl.showForm">
+                <form class="product-form">
+                    <label>{{$ctrl.product._id}}</label>
+                    <md-input-container class="md-block">
+                        <label>Name</label>
+                        <input required type="text" name="" ng-model="$ctrl.product.name" minlength="4" maxlength="25" />
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Info</label>
+                        <input required type="text" name="" ng-model="$ctrl.product.info" minlength="4" maxlength="100" />
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Price (GBP)</label>
+                        <input required type="text" step="any" name="price" ng-model="$ctrl.product.price" />
+                    </md-input-container>
+
+                    <div ng-show="$ctrl.edit">
+                        <md-button type="button" class="" ng-click="$ctrl.updateProduct($ctrl.product)">Save changes</md-button>
+                        <md-button type="button" class="" ng-click="$ctrl.showForm = !$ctrl.showForm">Discard changes</md-button>
+                    </div>
+
+                    <div ng-show="$ctrl.create">
+                        <md-button type="button" class="" ng-click="$ctrl.updateProduct($ctrl.product)">Add New</md-button>
+                        <md-button type="button" class="" ng-click="$ctrl.deleteProduct($ctrl.product)">Discard</md-button>
+                    </div>
+                </form>
+
+                <div style="margin-top: 2vh;" class="img-upload">
+                    <div ng-hide="1">
+                        <div ngf-select="$ctrl.uploadHandler($file)" ngf-drop="$ctrl.uploadHandler($file)" class="drop-box" ngf-drag-over-class="dragover"
+                            ngf-multiple="true" ngf-pattern="'image/*'" ngf-max-size="15MB" accept="image/*">Drop Images here or click to upload</div>
+                        <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+                    </div>
+
+                </div>
+                <div class="flex-sb">
+                    <md-virtual-repeat-container id="horizontal-container" md-orient-horizontal>
+                        <md-button accept="image/*" ngf-max-size="15MB" type="file" class="" ngf-select="$ctrl.uploadHandler($file)">Upload </md-button>
+                        <div md-virtual-repeat="image in $ctrl.images | reverse" class="repeated-item" flex>
+                            <a ng-click="$ctrl.openLightboxModal($index)">
+                                <div class="present">
+                                    <img class="img-slider" ng-src="{{image.thumbUrl}}" class="img-thumbnail">
+                                </div>
+                            </a>
+                        </div>
+                    </md-virtual-repeat-container>
+
+                </div>
 
 
-
+            </div>
         </div>
     </div>
 </div>

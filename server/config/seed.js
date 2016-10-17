@@ -14,47 +14,47 @@ Product.find({}).remove()
   .then(() => {
     Product.create({
       name: 'Tort 1',
-      imageUrl: '',
+      imageUrl: [],
       info: 'are castane',
       price: 12
     }, {
       name: 'Tort 2',
-      imageUrl: '',
+      imageUrl: [],
       info: 'admin',
       price: 6
     }, {
       name: 'Tort 2',
-      imageUrl: '',
+      imageUrl: [],
       info: 'admin',
       price: 6
     }, {
       name: 'Tort 2',
-      imageUrl: '',
+      imageUrl: [],
       info: 'admin',
       price: 6
     }, {
       name: 'Tort 2',
-      imageUrl: '',
+      imageUrl: [],
       info: 'admin',
       price: 6
     }, {
       name: 'Tort 2',
-      imageUrl: '',
+      imageUrl: [],
       info: 'admin',
       price: 6
     }, {
       name: 'Tort 2',
-      imageUrl: '',
+      imageUrl: [],
       info: 'admin',
       price: 6
     }, {
       name: 'Tort 2',
-      imageUrl: '',
+      imageUrl: [],
       info: 'admin',
       price: 6
     }, {
       name: 'Tort 2',
-      imageUrl: '',
+      imageUrl: [],
       info: 'admin',
       price: 6
     })

@@ -16,7 +16,8 @@ angular.module('projectOviApp', [
   'ngCart',
   'duScroll',
   'credit-cards',
-  'ngMaterial'
+  'ngMaterial',
+  'bootstrapLightbox',
 ])
 
 
@@ -25,4 +26,13 @@ angular.module('projectOviApp', [
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
-  });
+  })
+  .filter('reverse', function () {
+    return function (items) {
+      if (typeof items === 'undefined') { return; }
+      return angular.isArray(items) ?
+        items.slice().reverse() :
+        (items + '').split('').reverse().join('');
+    };
+  })
+  ;

@@ -1,18 +1,18 @@
 <div class="container">
     <h1>Checkout</h1>
 
-    <div class="flex-sb">
+    <div class="col-md-8">
         <md-button ui-sref="order.info">Info</md-button>
-            <md-button ui-sref="order.payment">Payment</md-button>
-            <md-button ui-sref="order.confirmed">Invoice</md-button>
-            <md-button ng-hide="$ctrl.isLoggedIn()" ng-click="login = !login">Login to fill details</md-button>
-            <md-button ng-click="$ctrl.cancelOrder($ctrl.order)">Cancel order</md-button>
+        <md-button ui-sref="order.payment">Payment</md-button>
+        <md-button ui-sref="order.confirmed">Invoice</md-button>
+        <md-button ng-hide="$ctrl.isLoggedIn()" ng-click="login = !login">Login to fill details</md-button>
+        <md-button ng-click="$ctrl.cancelOrder($ctrl.order)">Cancel order</md-button>
         <div class="card col-md-8">
-            
+
 
             <div class="payment" ui-view=""></div>
 
-            
+
 
             <div ng-show="!$ctrl.isLoggedIn() && login">
                 <login></login>
@@ -20,7 +20,7 @@
         </div>
 
         <div class="col-md-4">
-            
+
             <h2>Invoice</h2>
 
             <h3>Items</h3>

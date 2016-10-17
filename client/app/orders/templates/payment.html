@@ -23,17 +23,16 @@
                     </div>
                 </div>
             </div>
-            <label>Save card?</label>
-            <label>Use saved card?</label>
+            <!--<label>Save card?</label><label>Use saved card?</label>-->
             <br><br>
             <md-button type="submit">Confirm card details</md-button>
-            <md-button ng-show="$ctrl.validCard" ng-click="$ctrl.charge($ctrl.source)">Confirm payment</md-button>
+            <md-button style="border: 2px solid green;" ng-show="$ctrl.validCard" ng-click="$ctrl.charge($ctrl.source)">Confirm payment</md-button>
             <div class="flex-center-r">
                 <p style="font-weight:700; color: red;  " ng-show="$ctrl.paymentStatus">{{$ctrl.paymentStatus}}</p>
             </div>
         </form>
 
-        <div class="warnings">
+        <div style="margin-top: 6vh;" class="warnings">
 
             <table class="table">
                 <tr>

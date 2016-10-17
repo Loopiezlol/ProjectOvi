@@ -1,0 +1,59 @@
+
+
+.product-list.ng-leave {
+    animation: fadeOutLeft 1s;
+}
+
+
+
+          .flex-cr {
+	align-items: stretch; 
+	display: flex; 
+	justify-content: space-between; 
+}
+
+.flex-tr-r {
+    display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+   -webkit-justify-content: flex-end;
+   justify-content: flex-end;
+}
+
+.flex-sb {
+	display: flex; 
+	justify-content: space-between; 
+}
+//images
+.img-slider {
+    max-width: 8.5vh;
+}
+
+.product-thumbnail {
+    height: 190px;
+    background-size: cover;
+   overflow: hidden;
+}
+
+//
+#horizontal-container {
+  height: 100px;
+  width: 100%;
+  max-width: 830px; }
+
+.repeated-item {
+  border-right: 1px solid #ddd;
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  width: 8.5vh; 
+  padding-right: 10px;
+  }
+  
+
+md-content {
+  margin: 4px; }
+
+md-virtual-repeat-container {
+  border: solid 1px grey; }
