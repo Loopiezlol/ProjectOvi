@@ -23,7 +23,7 @@ class NavbarController {
     this.return = 0;
     Auth.getCurrentUser((user) => {
       this.userDetails = Details.get({ id: user.details }, () => {
-          console.log(this.userDetails)
+          //console.log(this.userDetails)
         });
     })
     //SERVICES

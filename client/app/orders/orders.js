@@ -14,16 +14,15 @@ angular.module('projectOviApp')
         url: '/info',
         templateUrl: 'app/orders/templates/user.info.html'
       })
-      /*
-      .state('order.info.login', {
-        url: '/login',
-        template: '<login></login>'
-      })
-      */
 
       .state('order.payment', {
         url: '/payment',
         templateUrl: 'app/orders/templates/payment.html'
+      })
+
+      .state('order.confirmed', {
+        url: '/confirmed',
+        templateUrl: 'app/orders/templates/confirmed.html'
       })
 
       .state('cart', {

@@ -6,12 +6,9 @@ var controller = require('./stripe.controller');
 var router = express.Router();
 
 router.post('/tokenize', controller.tokenize);
-router.post('/createcustomer', controller.createcustomer);
-router.post('/charge', controller.charge);
-//router.get('/:id', controller.show);
-//router.post('/', controller.createcustomer);
-router.get('/:customer_id', controller.charge);
-router.patch('/:id', controller.patch);
-router.delete('/:id', controller.destroy);
+router.post('/customer', controller.createCustomer);
+
+router.post('/charge', controller.chargeCard);
+router.post('/charge/:customer_id', controller.chargeCustomer);
 
 module.exports = router;

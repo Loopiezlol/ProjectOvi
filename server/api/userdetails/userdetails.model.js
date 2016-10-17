@@ -14,8 +14,8 @@ var UserdetailsSchema = new mongoose.Schema({
   stripeId: {type: String, default: 'no'},
   //checkout
   orderState: {type: String, default: 'cart'},
-  order_id: {type: String} //currentOrderId
-  //allOrders []
+  order_id: {type: String, default: 'no id'}, //currentOrderId
+  allOrders: [{type: String}]
 });
 
 export default mongoose.model('Userdetails', UserdetailsSchema);

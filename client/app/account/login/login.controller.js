@@ -1,7 +1,7 @@
 'use strict';
 
 class LoginController {
-  constructor(Auth, $state, $window, $scope) {
+  constructor(Auth, $state, $window, $scope , $location) {
     this.user = {};
     this.errors = {};
     this.submitted = false;
@@ -11,6 +11,17 @@ class LoginController {
     this.$state = $state;
     this.$window = $window;
     this.$scope = $scope;
+
+    this.$scope.$watch(() => {
+        return this.$state.$current.name
+      }, (newVal, oldVal) => {
+        if(this.Auth.isLoggedIn() && oldVal == 'login'){
+          this.$state.go('catalog');
+        } else if($location.path().match('login') !== null && this.Auth.isLoggedIn()) {
+          console.log('oo intrat aici');
+          this.$state.go('catalog');
+        }
+      })
   }
 
   $onInit() {
@@ -28,8 +39,6 @@ class LoginController {
       .then(() => {
         //BUG
         if(this.$state.current.current != 'orders'){
-          console.log(this.$state.name)
-          //this.$state.go('catalog');
           this.$window.location.reload(); //
         } else {
           this.$window.location.reload();

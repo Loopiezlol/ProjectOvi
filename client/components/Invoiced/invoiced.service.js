@@ -1,11 +1,14 @@
 'use strict';
-const angular = require('angular');
 
-/*@ngInject*/
-export function InvoicedService() {
-	// AngularJS will instantiate a singleton by calling "new" on this function
-}
+angular.module('projectOviApp')
+  .factory('Invoiced', function ($resource) {
 
-export default angular.module('projectOviApp', [])
-  .service('Invoiced', InvoicedService)
-  .name;
+    return $resource('/api/invoiced/:id/:controller', {
+      id: '@_id'
+    }, {
+        update: {
+          method: 'PUT'
+        }
+      });
+
+  });

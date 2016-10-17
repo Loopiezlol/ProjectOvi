@@ -15,15 +15,21 @@ return $resource('/api/stripe/:controller/:id', {
     createCustomer: {
       method: 'POST',
       params: {
-        controller: 'createcustomer'
+        controller: 'customer'
       }
     },
-    charge: {
+    chargeCard: {
       method: 'POST',
       params: {
         controller: 'charge'
       }
-    }, 
+    },
+    chargeCustomer: {
+      method: 'POST',
+      params: {
+        controller: 'charge'//needs id
+      }
+    },  
   });
 
   });

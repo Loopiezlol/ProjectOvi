@@ -9,20 +9,6 @@ import http from 'http';
 var _ = require('lodash');
 var Schema = mongoose.Schema;
 
-var InvoicedSchema = new mongoose.Schema({
-  customer: {type: String, default: '49231'},
-  payment_terms: {type: String, default: 'NET 14'},
-  items: [{
-    name: String,
-    quantity: Number,
-    unit_cost: Number
-  }],
-  taxes: [{
-    amount: Number
-  }]
-});
-
-
 var OrderDetailsSchema = new Schema({
   product: { type: Schema.Types.ObjectId, ref: 'Product' },
   quantity: Number,
@@ -46,14 +32,13 @@ var OrderSchema = new Schema({
   // payment info
   dueDate: {type: Date, default: Date.now()},
   status: { type: String, default: 'pending' }, // pending/failed/received/canceled/refunded
-  paymentType: { type: String, default: 'Invoiced' }, //Stripe
+  paymentType: { type: String, default: 'Stripe' }, //Stripe
   invoicedId: String,
   stripeId: String
 });
 
 OrderSchema.methods = {
   invoice() {
-    concole.log('aaaaaaaa');
   }
 };
 
