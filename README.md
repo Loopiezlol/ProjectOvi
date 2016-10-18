@@ -2,7 +2,7 @@
 - Node js, Mongo db, Express js, Angular js
 - This project is showcasing an ecommerce website for selling cakes
 
-- This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.6.1.
+- Generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.6.1.
 
 ## Getting Started
 
