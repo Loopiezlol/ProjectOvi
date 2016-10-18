@@ -82,7 +82,7 @@ exports.upload = function(req, res) {
   Product.findById(req.params.id)
     .then(handleEntityNotFound(res))
     .then(saveFile(res, file))
-    //.then(respondWithResult(res, 200))
+    .then(respondWithResult(res, 200))
     //.catch(handleError(res));
 };
 
