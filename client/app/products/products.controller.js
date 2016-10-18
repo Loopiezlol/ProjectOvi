@@ -50,7 +50,7 @@
       this.product = {
         name: 'Create a title',
         info: 'Create a subtitle',
-        price: 0
+        price: 3
       }
       this.images = [];
       this.Product.save(this.product, (data) => {
@@ -64,10 +64,13 @@
       this.create = 0;
       this.edit = 0;
       this.deleteProduct(product);
+      this.product = angular.copy(this.initial);
     }
 
     updateProduct(product) {
-      this.Product.update({ id: product._id }, product);
+      this.Product.update({ id: product._id }, product).$promise.then(() => {
+        this.product = angular.copy(this.initial);
+      });
       this.showForm = 0;
       this.create = 0;
       this.edit = 0;
@@ -77,11 +80,6 @@
       this.showForm = 0;
       this.create = 0;
       this.edit = 0;
-    }
-
-    addProduct(product) {
-      this.Product.save(product);
-      this.product = angular.copy(this.initial);
     }
 
     deleteProduct(product) {
@@ -128,7 +126,6 @@
       this.productData = Product.get({ id: $stateParams.id });
       this.edit = false;
       this.log = '';
-      $scope.upload = this.uploadHandler($scope, Upload, $timeout, $stateParams);
     }
     $onInit() {
 
@@ -136,8 +133,36 @@
 
     delete(product) {
       product.$remove(() => {
-        console.log('Sters');
+
       });
+    }
+
+    uploadHandler(file) {
+      if (file && !file.$error) {
+        this.$scope.file = file;
+        file.upload = this.Upload.upload({
+          url: '/api/products/' + this.product._id + '/upload',
+          file: file
+        });
+
+        file.upload.then((response) => {
+          console.log(response.data);
+          var modal = {
+            'url': response.data,
+            'thumbUrl': response.data
+          }
+          this.images.push(modal);
+        }, (response) => {
+          console.log(response);
+          if (response.status > 0) {
+            console.log(response.status + ': ' + response.data);
+          }
+        });
+
+        file.upload.progress(function (evt) {
+          file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+        });
+      }
     }
 
     changeProduct() {
