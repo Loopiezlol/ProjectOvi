@@ -1,2 +1,59 @@
-<h1>Last info</h1>
-{{order.total}}
+<div class="container">
+    <h1>Checkout</h1>
+
+    <div class="col-md-8">
+        <md-button ui-sref="order.info">Info</md-button>
+        <md-button ui-sref="order.payment">Payment</md-button>
+        <md-button ui-sref="order.confirmed">Invoice</md-button>
+        <md-button ng-hide="$ctrl.isLoggedIn()" ng-click="login = !login">Login to fill details</md-button>
+        <md-button ng-click="$ctrl.cancelOrder($ctrl.order)">Cancel order</md-button>
+        <div class="card col-md-8">
+
+
+            <div class="payment" ui-view=""></div>
+
+
+
+            <div ng-show="!$ctrl.isLoggedIn() && login">
+                <login></login>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+
+            <h2>Invoice</h2>
+
+            <h3>Items</h3>
+            <div ng-repeat="item in $ctrl.order.items">
+                <div class="col-md-6">
+                    Q:{{item.quantity}} T:{{item.total}} N:item name
+                </div>
+            </div>
+
+            <h4>Cost</h4>
+            <label>Payment type: </label>
+            <p> {{$ctrl.order.paymentType}}</p>
+            <p>shipping: {{$ctrl.order.shipping}}</p>
+            <p>tax: {{$ctrl.order.tax}}</p>
+            <p>discount: {{$ctrl.order.discount}}</p>
+            <p>subTotal: {{$ctrl.order.subTotal}}</p>
+            <p>total: {{$ctrl.order.total}}</p>
+
+
+            <h3>Your details:</h3>
+            <p>name: {{$ctrl.order.name}}</p>
+            <p>BillingAddress: {{$ctrl.order.billingAddress}}</p>
+            <p>Shipping address: {{$ctrl.order.shippingAddress}}</p>
+
+            <div ng-show="$ctrl.isAdmin()">
+                <label>Status:</label>
+                <p>{{$ctrl.order.status}}</p><br>
+                <label>id's</label>
+                <p> Invoiced ID {{$ctrl.order.invoicedID}}</p>
+                <p> Stripe ID: {{$ctrl.order.invoicedUserID}}</p>
+                <p>order ID: {{$ctrl.order._id}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>

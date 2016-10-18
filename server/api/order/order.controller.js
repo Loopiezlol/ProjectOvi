@@ -25,6 +25,7 @@ function respondWithResult(res, statusCode) {
 function saveUpdates(updates) {
   return function(entity) {
     var updated = _.merge(entity, updates);
+    console.log(updated);
     return updated.save()
       .then(updated => {
         return updated;
@@ -61,7 +62,9 @@ function handleError(res, statusCode) {
     res.status(statusCode).send(err);
   };
 }
-
+export function invoice(req, res) {
+  Order.invoice()
+}
 // Gets a list of Orders
 export function index(req, res) {
   return Order.find().exec()
@@ -71,6 +74,7 @@ export function index(req, res) {
 
 // Gets a single Order from the DB
 export function show(req, res) {
+  //Order.invoice()
   return Order.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))

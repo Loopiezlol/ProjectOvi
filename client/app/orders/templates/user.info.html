@@ -1,0 +1,50 @@
+<div ng-hide="login">
+    <h2 style="border-bottom: 1px solid black">
+        Enter your info</h2>
+    <form name="userForm">
+
+
+
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Name</label>
+                <input ng-model="$ctrl.order.name">
+            </md-input-container>
+        </div>
+
+        <md-input-container class="md-block">
+            <label>Shipping address</label>
+            <input ng-model="$ctrl.order.shippingAddress">
+        </md-input-container>
+
+        <md-input-container md-no-float class="md-block">
+            <input ng-model="$ctrl.order.billingAddress" placeholder="Billing address">
+        </md-input-container>
+
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>City</label>
+                <input ng-model="city">
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Postal Code</label>
+                <input name="postalCode" ng-model="postalCode" placeholder="12345" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+
+                <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+                    <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                    <div ng-message="pattern" class="my-message">That doesn't look like a valid postal code.
+                    </div>
+                    <div ng-message="md-maxlength" class="my-message">
+                        It looks too long for a postal code
+                    </div>
+                </div>
+            </md-input-container>
+        </div>
+
+        <div class="flex-tl-r">
+            <md-button ng-click="$ctrl.goToPayment($ctrl.order)">Continue to payment</md-button>
+        </div>
+    </form>
+
+</div>

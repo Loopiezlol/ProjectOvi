@@ -3,7 +3,7 @@
 import mongoose from 'mongoose';
 
 var InvoicedSchema = new mongoose.Schema({
-  customer: {type: String, default: '49231'},
+  customer: String,
   payment_terms: {type: String, default: 'NET 14'},
   items: [{
     name: String,

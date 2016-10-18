@@ -32,6 +32,33 @@ export function index(req, res) {
 }
 
 /**
+ * changes user attributes //TODO: only modify shipping billing invoicedId userStatus
+ */
+export function changeProfile(req, res, next) {
+  if (req.body._id) {
+    delete req.body._id;
+  }
+
+  var userId = req.params.id;
+
+
+  return User.findById(userId).exec()
+    .then(user => {
+      if (1) {
+        user.shippingAddress = req.body.shippingAddress;
+        user.billingAddress = req.body.billingAddress;
+        return user.save()
+          .then(() => {
+            res.status(204).end();
+          })
+          .catch(validationError(res));
+      } else {
+        return res.status(403).end();
+      }
+    });
+}
+
+/**
  * Creates a new user
  */
 export function create(req, res, next) {
@@ -105,7 +132,9 @@ export function changePassword(req, res, next) {
 export function me(req, res, next) {
   var userId = req.user._id;
 
-  return User.findOne({ _id: userId }, '-salt -password').exec()
+  return User.findOne({ _id: userId }, '-salt -password')
+    //.populate('details')
+    .exec()
     .then(user => { // don't ever give out the password or salt
       if (!user) {
         return res.status(401).end();

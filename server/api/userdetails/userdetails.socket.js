@@ -4,18 +4,18 @@
 
 'use strict';
 
-import BraintreeEvents from './braintree.events';
+import UserdetailsEvents from './userdetails.events';
 
 // Model events to emit
 var events = ['save', 'remove'];
 
 export function register(socket) {
   // Bind model events to socket events
-  for (var i = 0, eventsLength = events.length; i < eventsLength; i++) {
+  for(var i = 0, eventsLength = events.length; i < eventsLength; i++) {
     var event = events[i];
-    var listener = createListener('braintree:' + event, socket);
+    var listener = createListener(`userdetails:${event}`, socket);
 
-    BraintreeEvents.on(event, listener);
+    UserdetailsEvents.on(event, listener);
     socket.on('disconnect', removeListener(event, listener));
   }
 }
@@ -29,6 +29,6 @@ function createListener(event, socket) {
 
 function removeListener(event, listener) {
   return function() {
-    BraintreeEvents.removeListener(event, listener);
+    UserdetailsEvents.removeListener(event, listener);
   };
 }

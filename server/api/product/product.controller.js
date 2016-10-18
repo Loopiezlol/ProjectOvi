@@ -62,16 +62,15 @@ function handleError(res, statusCode) {
 
 function saveFile(res, file) {
   return function(entity){
-    //TODO delete last image
     var newPath = '/assets/uploads/' + path.basename(file.path);
     console.log('new path is' + newPath);
-    entity.imageUrl = newPath;
-    return entity.save().spread(function(updated) {
-      console.log(updated);
-      return updated;
-    });
+    entity.imageUrl.push(newPath);
+    entity.save();
+    res.send(newPath);
   }
 } 
+
+//TODO: route to delete images
 
 // Uploads a new Product's image in the DB
 exports.upload = function(req, res) {
@@ -83,8 +82,8 @@ exports.upload = function(req, res) {
   Product.findById(req.params.id)
     .then(handleEntityNotFound(res))
     .then(saveFile(res, file))
-    .then(respondWithResult(res))
-    .catch(handleError(res));
+    //.then(respondWithResult(res, 200))
+    //.catch(handleError(res));
 };
 
 // Gets a list of Products

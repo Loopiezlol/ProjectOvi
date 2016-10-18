@@ -5,19 +5,47 @@ class NavbarController {
   menu = [{
     'title': 'Home',
     'state': 'main'
-  }, { 
-      'title': 'Products',
-      'state': 'products'
+  }, {
+      'title': 'Catalog',
+      'state': 'catalog'
     }];
 
   isCollapsed = true;
   //end-non-standard
 
-  constructor(Auth) {
+  constructor(Auth, $state, Details, $rootScope, $scope) {
+    //INITIALS
+
+    //user details
+    this.getCurrentUser = Auth.getCurrentUser;
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;
-    this.getCurrentUser = Auth.getCurrentUser;
+    this.return = 0;
+    if (Auth.isLoggedIn()) {
+      Auth.getCurrentUser((user) => {
+        this.userDetails = Details.get({ id: user.details }, () => {
+          //console.log(this.userDetails)
+        });
+      })
+    }
+
+    //SERVICES
+    this.Auth = Auth;
+    this.Details = Details;
+    //TOOLS
+    this.$rootScope = $rootScope;
+    this.$state = $state;
+
   }
+
+  $onInit() {
+
+  }
+
+  resumeOrder() {
+    this.$state.go(this.userDetails.orderState);
+  }
+
 }
 
 angular.module('projectOviApp')

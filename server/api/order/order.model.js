@@ -1,6 +1,10 @@
 'use strict';
 
 import mongoose from 'mongoose';
+import https from 'https';
+import http from 'http';
+
+
 
 var _ = require('lodash');
 var Schema = mongoose.Schema;
@@ -10,6 +14,7 @@ var OrderDetailsSchema = new Schema({
   quantity: Number,
   total: {type: Number, get: getPrice, set: setPrice }
 });
+
 
 var OrderSchema = new Schema({
   // buyer details
@@ -24,35 +29,18 @@ var OrderSchema = new Schema({
   discount: {type: Number, get: getPrice, set: setPrice, default: 0.0 },
   subTotal: {type: Number, get: getPrice, set: setPrice },
   total: {type: Number, get: getPrice, set: setPrice, required: true },
-  // invoiced info
-  status: { type: String, default: 'pending' }, // pending, paid/ failed, delivered, canceled, refunded.
-  paymentType: { type: String, default: 'Invoiced' },
-  invoiceID: String,
-  invoicedUserID: String
+  // payment info
+  dueDate: {type: Date, default: Date.now()},
+  status: { type: String, default: 'pending' }, // pending/failed/received/canceled/refunded
+  paymentType: { type: String, default: 'Stripe' }, //Stripe
+  invoicedId: String,
+  stripeId: String
 });
-/*
-// execute payment
-OrderSchema.pre('validate', function (next) {
-  if(!this.nonce) { next(); }
-  executePayment(this, function (err, result) {
-    this.paymentStatus = result;//--
-    if(err || !result.success){
-      this.status = 'failed. ';// + result.errors + err;
-      next(err || result.errors);
-    } else {
-      this.status = 'paid';//----
-      next();
-    }
-  }.bind(this));
-});*/
 
-
-function executePayment(payment, cb){
-  Braintree.transaction.sale({
-    amount: payment.total,
-    paymentMethodNonce: payment.nonce,
-  }, cb);
-}
+OrderSchema.methods = {
+  invoice() {
+  }
+};
 
 function getPrice(num){
     return (num/100).toFixed(2);

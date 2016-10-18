@@ -9,6 +9,7 @@ const authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
   name: String,
+  details: String,// {type: mongoose.Schema.Types.ObjectId, ref: 'Details'}
   email: {
     type: String,
     lowercase: true,
