@@ -16,9 +16,6 @@
       this.create = 0;
       this.edit = 0;
 
-      //
-      this.$state = $state;
-
       //tools
       this.socket = socket;
       this.$state = $state;
@@ -44,7 +41,7 @@
         }
         this.images.push(modal);
       });
-      
+
     }
 
     newProduct() {
@@ -182,15 +179,38 @@
     }
   }
 
+  class CatalogController {
+    constructor(Product, socket, $state) {
+      //services
+      this.Product = Product;
+
+      //tools
+      this.socket = socket;
+      this.$state = $state;
+      this.message = 'msjjjjjjjjjjjj';
+
+      //products querry
+      this.products = Product.query(() => {
+        this.socket.syncUpdates('product', this.products);
+      });
+    }
+
+    $onInit() {
+
+    }
+  }
+
 
   angular.module('projectOviApp')
+    .controller('CatalogController', CatalogController)
+
     .component('product', {
       templateUrl: 'app/products/templates/product.profile.html',
       controller: ProductComponent
     })
 
     .component('products', {
-      templateUrl: 'app/products/templates/products.html',
+      templateUrl: 'app/products/templates/manage.html',
       controller: AllProductsComponent
     });
 

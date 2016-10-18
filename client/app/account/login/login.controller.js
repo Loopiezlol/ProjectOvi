@@ -1,7 +1,7 @@
 'use strict';
 
 class LoginController {
-  constructor(Auth, $state, $window, $scope , $location) {
+  constructor(Auth, $state, $window, $scope, $location) {
     this.user = {};
     this.errors = {};
     this.submitted = false;
@@ -13,15 +13,15 @@ class LoginController {
     this.$scope = $scope;
 
     this.$scope.$watch(() => {
-        return this.$state.$current.name
-      }, (newVal, oldVal) => {
-        if(this.Auth.isLoggedIn() && oldVal == 'login'){
-          this.$state.go('catalog');
-        } else if($location.path().match('login') !== null && this.Auth.isLoggedIn()) {
-          console.log('oo intrat aici');
-          this.$state.go('catalog');
-        }
-      })
+      return this.$state.$current.name
+    }, (newVal, oldVal) => {
+      if (this.Auth.isLoggedIn() && oldVal == 'login') {
+        this.$state.go('catalog');
+      } else if ($location.path().match('login') !== null && this.Auth.isLoggedIn()) {
+        console.log('oo intrat aici');
+        this.$state.go('catalog');
+      }
+    })
   }
 
   $onInit() {
@@ -36,27 +36,27 @@ class LoginController {
         email: this.user.email,
         password: this.user.password
       })
-      .then(() => {
-        //BUG
-        if(this.$state.current.current != 'orders'){
-          this.$window.location.reload(); //
-        } else {
-          this.$window.location.reload();
-        }
-    
+        .then(() => {
+          //BUG
+          if (this.$state.current.current != 'orders') {
+            this.$window.location.reload(); //
+          } else {
+            this.$window.location.reload();
+          }
 
 
-      })
-      .catch(err => {
-        this.errors.other = err.message;
-      });
+
+        })
+        .catch(err => {
+          this.errors.other = err.message;
+        });
     }
   }
 }
 
 angular.module('projectOviApp')
   .component('login', {
-      templateUrl: 'app/account/login/login.html',
-      controller: LoginController,
-          controllerAs: 'vm'
-    });
+    templateUrl: 'app/account/login/login.html',
+    controller: LoginController,
+    controllerAs: 'vm'
+  });

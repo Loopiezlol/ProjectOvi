@@ -234,6 +234,73 @@ p, h1, h2, h3 {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+/* AUTH
+===================== */
+ /*######VARIABLES######*/
+$primaryColor: #94152C;
+$secondaryColor: #28080C; //#61031D
+$thirdColor: #7B162C;
+$backgroundColor: #FCF5F0;// 24303D  #FFF9F7
+$interfaceColor: #FFFFFF;
+$navbarColor: #0D0D0D;
+
+.center {
+    display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: column; /* works with row or column */
+   flex-direction: column;
+   -webkit-align-items: center; 
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+}
+
+
+
+.auth-container {
+    margin-top: 7vh;
+    border-radius: 2px;
+    background-color: $interfaceColor;
+    padding: 2vh;
+    width: 40vh;
+    background-color: $interfaceColor;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+    h1 {
+        padding-bottom: 20px;
+        color: $primaryColor;
+    }
+}
+
+.seed {
+    padding-top: 3vh;
+    p {
+    font-size: 1.2rem;
+    line-height: 40%;
+    color: darkgrey;
+    font-family: Helvetica, Arial, sans-serif;
+    }
+}
+
+.btn-facebook {
+    color: #3b5998;
+    background-color: #ffffff;
+    border-color: #3b5998;
+}
+
+.btn-google {
+    color: #dd4b39;
+    background-color: #ffffff;
+    border-color: #dd4b39;
+    
+}
+
+.btn-twitter {
+    color: #55acee;
+    background-color: #ffffff;
+    border-color: #55acee;
+}
 //
 // #cakeContainer {
 //   height: 250px;

@@ -10,7 +10,9 @@ angular.module('projectOviApp')
 
       .state('catalog', {
         url: '/catalog',
-        template: '<products></products>'
+        templateUrl: 'app/products/templates/catalog.html',
+        controller: 'CatalogController',
+        controllerAs: 'vm'
       })
 
       .state('products', {

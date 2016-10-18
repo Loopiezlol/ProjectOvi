@@ -6,8 +6,8 @@ class NavbarController {
     'title': 'Home',
     'state': 'main'
   }, {
-      'title': 'Products',
-      'state': 'products'
+      'title': 'Catalog',
+      'state': 'catalog'
     }];
 
   isCollapsed = true;
@@ -21,11 +21,14 @@ class NavbarController {
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;
     this.return = 0;
-    Auth.getCurrentUser((user) => {
-      this.userDetails = Details.get({ id: user.details }, () => {
+    if (Auth.isLoggedIn()) {
+      Auth.getCurrentUser((user) => {
+        this.userDetails = Details.get({ id: user.details }, () => {
           //console.log(this.userDetails)
         });
-    })
+      })
+    }
+
     //SERVICES
     this.Auth = Auth;
     this.Details = Details;
