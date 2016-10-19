@@ -3,14 +3,5 @@
     <h1>Cart</h1>
     <ngcart-cart template-url="components/ngCart/cart.html"></ngcart-cart>
   </div>
-
-  <div class="row">
-    <h1>Choose a payment method</h1>
-    <p class="help-block">{{ $ctrl.errors }}</p><br>
-    <div class="col-md-6">
-      <braintree-paypal></braintree-paypal>
-    </div>
-    <button type="button" ng-click="$ctrl.checkout()">buoy</button>
-  </div>
-    
+    <md-button ng-show="ngCart.getTotalItems() === 0" type="button" ng-click="$ctrl.checkout()">Checkout</md-button>
 </div>
